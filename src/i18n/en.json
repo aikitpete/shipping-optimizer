@@ -1,6 +1,6 @@
 {
   "app.db_error": "Browser storage (IndexedDB) is unavailable, so plans will not be saved.",
-  "app.demo": "Demo data: fictional carriers and illustrative prices, built to show how the optimizer works. Not real tariffs.",
+  "app.demo": "Sample data: illustrative carriers and prices that show how the optimizer works. Not live tariffs.",
   "app.disclaimer": "Prices are research estimates unless marked \"Verified\". Always confirm with the carrier before paying. Incomplete totals are never final.",
   "app.title": "International Shipping Optimizer",
   "assume.battery": "battery type/installation assumed",

@@ -1,6 +1,6 @@
 {
   "app.db_error": "Der Browser-Speicher (IndexedDB) ist nicht verfügbar, daher werden Pläne nicht gespeichert.",
-  "app.demo": "Demodaten: fiktive Anbieter und beispielhafte Preise, um die Funktionsweise des Optimierers zu zeigen. Keine echten Tarife.",
+  "app.demo": "Beispieldaten: illustrative Anbieter und Preise, die zeigen, wie der Optimierer arbeitet. Keine aktuellen Tarife.",
   "app.disclaimer": "Preise sind Recherche-Schätzungen, sofern nicht als „Geprüft“ markiert. Vor der Zahlung immer beim Anbieter bestätigen. Unvollständige Summen sind nie endgültig.",
   "app.title": "Internationaler Versand-Optimierer",
   "assume.battery": "Batterietyp/Einbau angenommen",

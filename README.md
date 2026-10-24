@@ -4,13 +4,13 @@
 
 Multilingual (the demo ships English and German; languages are set per data profile) · React + TypeScript + Vite · runs entirely in the browser · MIT
 
-**[Live demo →](https://aikitpete.github.io/shipping-optimizer/)** (fictional carriers and illustrative prices)
+**[Live demo →](https://aikitpete.github.io/shipping-optimizer/)** (sample carriers and illustrative prices)
 
 ![Planner with the launch plan, strategies and a priced total](docs/screenshots/planner.png)
 
 ## The demo story
 
-The bundled demo profile follows **Kestrel Labs**, a made-up Leipzig hardware startup shipping its first product, a pocket synthesizer. Each of the six shipments exists to show one thing the optimizer gets right:
+The bundled sample profile walks through a typical product launch: a small hardware company in Leipzig shipping its first product, a pocket synthesizer, to customers, reviewers and partners worldwide. Each of the six shipments shows one thing the optimizer gets right:
 
 | # | Shipment | What it demonstrates |
 |---|---|---|
@@ -27,7 +27,7 @@ Open **Compare** to try the package guide (documents, a device box, a carton, a 
 |---|---|---|
 | ![](docs/screenshots/compare.png) | ![](docs/screenshots/tariffs.png) | ![](docs/screenshots/data-health.png) |
 
-> **Everything in the demo is fictional.** Carriers (Nordpost, Meridian Express, Parcelhub, Atlas Freight), prices and URLs are invented to be realistic in *shape*. Prices are never offers. The engine tags every price with a status and a primary source; nothing is "verified" without one.
+> **The demo runs on sample data.** The carriers (Nordpost, Meridian Express, Parcelhub, Atlas Freight), prices and URLs are illustrative, built to be realistic in *shape*, so the repository can be public. They are not live tariffs and never an offer. The engine tags every price with a status and a primary source; nothing is "verified" without one.
 
 ## Swappable data: public demo, private real data
 

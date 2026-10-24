@@ -1,6 +1,6 @@
 {
   "app.db_error": "Úložisko prehliadača (IndexedDB) nie je dostupné, plány sa neuložia.",
-  "app.demo": "Demo dáta: vymyslení prepravcovia a ilustračné ceny na ukážku fungovania optimalizátora. Nie sú to reálne cenníky.",
+  "app.demo": "Ukážkové dáta: ilustratívni prepravcovia a ceny na ukážku fungovania optimalizátora. Nie sú to aktuálne cenníky.",
   "app.disclaimer": "Ceny sú výskumné odhady, pokiaľ nie sú označené ako „Overené“. Pred platbou ich vždy potvrďte u prepravcu. Neúplné súčty nikdy nie sú konečné.",
   "app.title": "Optimalizátor medzinárodných zásielok",
   "assume.battery": "typ batérie a jej vloženie je predpoklad",
