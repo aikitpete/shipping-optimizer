@@ -1,0 +1,12 @@
+{
+  "base": "EUR",
+  "source": "Demo fixture (illustrative reference rate)",
+  "sourceUrl": "https://example.com/rates",
+  "rateDate": "2026-10-12",
+  "fetchedAt": "2026-10-13",
+  "status": "verified_published",
+  "rates": {
+    "USD": 1.09
+  },
+  "note": "Fixed demo rate. EUR = native / rate. Run `npm run update:rates` to refresh from the ECB."
+}

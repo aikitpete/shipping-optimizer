@@ -1,0 +1,80 @@
+[
+  {
+    "id": "src-np-tarif",
+    "title": "Nordpost international price list 2026 (demo)",
+    "url": "https://example.com/nordpost/prices-2026.pdf",
+    "kind": "official_pdf",
+    "authority": "carrier_official",
+    "accessedAt": "2026-10-02",
+    "fetchable": true,
+    "locator": "p. 4-9 (parcels), p. 12 (letters)"
+  },
+  {
+    "id": "src-np-limits",
+    "title": "Nordpost size and weight limits (demo)",
+    "url": "https://example.com/nordpost/limits",
+    "kind": "official_page",
+    "authority": "carrier_official",
+    "accessedAt": "2026-10-02",
+    "fetchable": true
+  },
+  {
+    "id": "src-mx-calc",
+    "title": "Meridian Express rate calculator (demo)",
+    "url": "https://example.com/meridian/rate-calculator",
+    "kind": "official_calculator",
+    "authority": "carrier_calculator",
+    "accessedAt": "2026-10-05",
+    "fetchable": true,
+    "locator": "Account-free list rates, 1 kg / 5 kg / 20 kg probes"
+  },
+  {
+    "id": "src-mx-guide",
+    "title": "Meridian Express service guide: dimensional weight and batteries (demo)",
+    "url": "https://example.com/meridian/service-guide.pdf",
+    "kind": "official_pdf",
+    "authority": "carrier_official",
+    "accessedAt": "2026-10-05",
+    "fetchable": true,
+    "locator": "s. 3.2 dimensional weight (L×W×H ÷ 5000), s. 7 lithium batteries"
+  },
+  {
+    "id": "src-ph-quote",
+    "title": "Parcelhub comparison engine, sampled quotes (demo)",
+    "url": "https://example.com/parcelhub/compare",
+    "kind": "secondary",
+    "authority": "secondary",
+    "accessedAt": "2026-10-06",
+    "fetchable": false,
+    "locator": "Quotes vary by carrier mix and day; treated as estimates"
+  },
+  {
+    "id": "src-af-quote",
+    "title": "Atlas Freight quote form (demo)",
+    "url": "https://example.com/atlas/quote",
+    "kind": "secondary",
+    "authority": "secondary",
+    "accessedAt": null,
+    "fetchable": false,
+    "locator": "Priced per shipment by e-mail"
+  },
+  {
+    "id": "src-rates",
+    "title": "Reference exchange rate, EUR/USD (demo fixture)",
+    "url": "https://example.com/rates",
+    "kind": "official_page",
+    "authority": "regulator",
+    "accessedAt": "2026-10-12",
+    "fetchable": true
+  },
+  {
+    "id": "src-seed",
+    "title": "Author's notes (demo seed)",
+    "url": "https://example.com/notes",
+    "kind": "user_seed",
+    "authority": "seed",
+    "accessedAt": null,
+    "fetchable": false,
+    "locator": "Transit estimates from past shipments"
+  }
+]

@@ -1,0 +1,279 @@
+{
+  "tariffs": [
+    {
+      "id": "ph-best-rate:DEU-USA",
+      "serviceId": "ph-best-rate",
+      "routeId": "DEU-USA",
+      "currency": "USD",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "research_estimate",
+      "sourceIds": [
+        "src-ph-quote"
+      ],
+      "primarySourceId": "src-ph-quote",
+      "lastVerified": "2026-10-06",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.ph_estimate"
+      ],
+      "optionalCharges": [],
+      "type": "sample_points",
+      "points": [
+        {
+          "kg": 1,
+          "price": 31
+        },
+        {
+          "kg": 2,
+          "price": 36
+        },
+        {
+          "kg": 5,
+          "price": 52
+        },
+        {
+          "kg": 10,
+          "price": 78
+        },
+        {
+          "kg": 20,
+          "price": 128
+        },
+        {
+          "kg": 30,
+          "price": 176
+        }
+      ]
+    },
+    {
+      "id": "ph-best-rate:DEU-JPN",
+      "serviceId": "ph-best-rate",
+      "routeId": "DEU-JPN",
+      "currency": "USD",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "research_estimate",
+      "sourceIds": [
+        "src-ph-quote"
+      ],
+      "primarySourceId": "src-ph-quote",
+      "lastVerified": "2026-10-06",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.ph_estimate"
+      ],
+      "optionalCharges": [],
+      "type": "sample_points",
+      "points": [
+        {
+          "kg": 1,
+          "price": 35.65
+        },
+        {
+          "kg": 2,
+          "price": 41.4
+        },
+        {
+          "kg": 5,
+          "price": 59.8
+        },
+        {
+          "kg": 10,
+          "price": 89.7
+        },
+        {
+          "kg": 20,
+          "price": 147.2
+        },
+        {
+          "kg": 30,
+          "price": 202.4
+        }
+      ]
+    },
+    {
+      "id": "ph-best-rate:DEU-AUS",
+      "serviceId": "ph-best-rate",
+      "routeId": "DEU-AUS",
+      "currency": "USD",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "research_estimate",
+      "sourceIds": [
+        "src-ph-quote"
+      ],
+      "primarySourceId": "src-ph-quote",
+      "lastVerified": "2026-10-06",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.ph_estimate"
+      ],
+      "optionalCharges": [],
+      "type": "sample_points",
+      "points": [
+        {
+          "kg": 1,
+          "price": 40.3
+        },
+        {
+          "kg": 2,
+          "price": 46.8
+        },
+        {
+          "kg": 5,
+          "price": 67.6
+        },
+        {
+          "kg": 10,
+          "price": 101.4
+        },
+        {
+          "kg": 20,
+          "price": 166.4
+        },
+        {
+          "kg": 30,
+          "price": 228.8
+        }
+      ]
+    },
+    {
+      "id": "ph-best-rate:DEU-BRA",
+      "serviceId": "ph-best-rate",
+      "routeId": "DEU-BRA",
+      "currency": "USD",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "research_estimate",
+      "sourceIds": [
+        "src-ph-quote"
+      ],
+      "primarySourceId": "src-ph-quote",
+      "lastVerified": "2026-10-06",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.ph_estimate"
+      ],
+      "optionalCharges": [],
+      "type": "sample_points",
+      "points": [
+        {
+          "kg": 1,
+          "price": 46.5
+        },
+        {
+          "kg": 2,
+          "price": 54.0
+        },
+        {
+          "kg": 5,
+          "price": 78.0
+        },
+        {
+          "kg": 10,
+          "price": 117.0
+        },
+        {
+          "kg": 20,
+          "price": 192.0
+        },
+        {
+          "kg": 30,
+          "price": 264.0
+        }
+      ]
+    },
+    {
+      "id": "af-consolidated:DEU-USA",
+      "serviceId": "af-consolidated",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "email",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "quote_required",
+      "sourceIds": [
+        "src-af-quote"
+      ],
+      "primarySourceId": "src-af-quote",
+      "lastVerified": null,
+      "effectiveDate": null,
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.af_quote"
+      ],
+      "optionalCharges": [],
+      "type": "quote_only",
+      "quoteUrl": "https://example.com/atlas/quote"
+    },
+    {
+      "id": "af-consolidated:DEU-AUS",
+      "serviceId": "af-consolidated",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "email",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "quote_required",
+      "sourceIds": [
+        "src-af-quote"
+      ],
+      "primarySourceId": "src-af-quote",
+      "lastVerified": null,
+      "effectiveDate": null,
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.af_quote"
+      ],
+      "optionalCharges": [],
+      "type": "quote_only",
+      "quoteUrl": "https://example.com/atlas/quote"
+    },
+    {
+      "id": "af-consolidated:DEU-BRA",
+      "serviceId": "af-consolidated",
+      "routeId": "DEU-BRA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "email",
+      "vatMode": "unknown",
+      "fuelSurcharge": "unknown",
+      "confidence": "low",
+      "status": "quote_required",
+      "sourceIds": [
+        "src-af-quote"
+      ],
+      "primarySourceId": "src-af-quote",
+      "lastVerified": null,
+      "effectiveDate": null,
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.af_quote"
+      ],
+      "optionalCharges": [],
+      "type": "quote_only",
+      "quoteUrl": "https://example.com/atlas/quote"
+    }
+  ]
+}

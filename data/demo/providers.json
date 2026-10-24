@@ -1,0 +1,30 @@
+[
+  {
+    "id": "nordpost",
+    "name": "Nordpost",
+    "type": "postal",
+    "country": "DEU",
+    "website": "https://example.com/nordpost"
+  },
+  {
+    "id": "meridian",
+    "name": "Meridian Express",
+    "type": "courier",
+    "country": "DEU",
+    "website": "https://example.com/meridian"
+  },
+  {
+    "id": "parcelhub",
+    "name": "Parcelhub",
+    "type": "aggregator",
+    "country": "DEU",
+    "website": "https://example.com/parcelhub"
+  },
+  {
+    "id": "atlas",
+    "name": "Atlas Freight",
+    "type": "courier",
+    "country": "DEU",
+    "website": "https://example.com/atlas"
+  }
+]

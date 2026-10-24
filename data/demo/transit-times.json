@@ -1,0 +1,496 @@
+[
+  {
+    "serviceId": "np-letter-registered",
+    "routeId": "DEU-USA",
+    "minDays": 5,
+    "maxDays": 10,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-letter-registered",
+    "routeId": "DEU-JPN",
+    "minDays": 5,
+    "maxDays": 10,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-letter-registered",
+    "routeId": "DEU-AUS",
+    "minDays": 6,
+    "maxDays": 12,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-letter-registered",
+    "routeId": "DEU-CHE",
+    "minDays": 2,
+    "maxDays": 4,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-economy",
+    "routeId": "DEU-USA",
+    "minDays": 6,
+    "maxDays": 12,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-economy",
+    "routeId": "DEU-JPN",
+    "minDays": 7,
+    "maxDays": 14,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-economy",
+    "routeId": "DEU-AUS",
+    "minDays": 8,
+    "maxDays": 16,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-economy",
+    "routeId": "DEU-BRA",
+    "minDays": 15,
+    "maxDays": 35,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-economy",
+    "routeId": "DEU-CHE",
+    "minDays": 3,
+    "maxDays": 6,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-priority",
+    "routeId": "DEU-USA",
+    "minDays": 3,
+    "maxDays": 6,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-priority",
+    "routeId": "DEU-JPN",
+    "minDays": 4,
+    "maxDays": 7,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-priority",
+    "routeId": "DEU-AUS",
+    "minDays": 5,
+    "maxDays": 9,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "np-parcel-priority",
+    "routeId": "DEU-CHE",
+    "minDays": 2,
+    "maxDays": 3,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-np-tarif"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "DEU-USA",
+    "minDays": 1,
+    "maxDays": 3,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "DEU-JPN",
+    "minDays": 2,
+    "maxDays": 4,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "DEU-AUS",
+    "minDays": 3,
+    "maxDays": 5,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "DEU-BRA",
+    "minDays": 3,
+    "maxDays": 6,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "DEU-CHE",
+    "minDays": 1,
+    "maxDays": 2,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-envelope",
+    "routeId": "JPN-DEU",
+    "minDays": 2,
+    "maxDays": 4,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "DEU-USA",
+    "minDays": 2,
+    "maxDays": 3,
+    "guaranteed": true,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "DEU-JPN",
+    "minDays": 2,
+    "maxDays": 4,
+    "guaranteed": true,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "DEU-AUS",
+    "minDays": 3,
+    "maxDays": 5,
+    "guaranteed": true,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "DEU-BRA",
+    "minDays": 3,
+    "maxDays": 6,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "DEU-CHE",
+    "minDays": 1,
+    "maxDays": 2,
+    "guaranteed": true,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-express",
+    "routeId": "JPN-DEU",
+    "minDays": 2,
+    "maxDays": 4,
+    "guaranteed": true,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "DEU-USA",
+    "minDays": 4,
+    "maxDays": 7,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "DEU-JPN",
+    "minDays": 5,
+    "maxDays": 8,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "DEU-AUS",
+    "minDays": 6,
+    "maxDays": 9,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "DEU-BRA",
+    "minDays": 7,
+    "maxDays": 12,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "DEU-CHE",
+    "minDays": 2,
+    "maxDays": 3,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "mx-economy",
+    "routeId": "JPN-DEU",
+    "minDays": 5,
+    "maxDays": 8,
+    "guaranteed": false,
+    "status": "verified_published",
+    "sourceIds": [
+      "src-mx-guide"
+    ],
+    "lastVerified": "2026-10-08",
+    "noteKey": null
+  },
+  {
+    "serviceId": "ph-best-rate",
+    "routeId": "DEU-USA",
+    "minDays": 4,
+    "maxDays": 10,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "ph-best-rate",
+    "routeId": "DEU-JPN",
+    "minDays": 5,
+    "maxDays": 11,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "ph-best-rate",
+    "routeId": "DEU-AUS",
+    "minDays": 6,
+    "maxDays": 12,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "ph-best-rate",
+    "routeId": "DEU-BRA",
+    "minDays": 8,
+    "maxDays": 18,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "af-consolidated",
+    "routeId": "DEU-USA",
+    "minDays": 7,
+    "maxDays": 14,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "af-consolidated",
+    "routeId": "DEU-AUS",
+    "minDays": 10,
+    "maxDays": 18,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  },
+  {
+    "serviceId": "af-consolidated",
+    "routeId": "DEU-BRA",
+    "minDays": 14,
+    "maxDays": 28,
+    "guaranteed": false,
+    "status": "research_estimate",
+    "sourceIds": [
+      "src-seed"
+    ],
+    "lastVerified": null,
+    "noteKey": null
+  }
+]

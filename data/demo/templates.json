@@ -1,0 +1,193 @@
+{
+  "plans": [
+    {
+      "id": "launch-q4",
+      "nameKey": "default.plan.name",
+      "shipments": [
+        {
+          "id": "ship-1",
+          "nameKey": "default.s1.name",
+          "descriptionKey": "default.s1.desc",
+          "originCountry": "DEU",
+          "destinationCountry": "JPN",
+          "category": "original_documents",
+          "weightKg": 0.3,
+          "senderType": "business",
+          "trackingRequired": true,
+          "signatureRequired": true,
+          "irreplaceable": true,
+          "insuranceDesired": false,
+          "deadlineDays": 3,
+          "budgetPreference": "fastest",
+          "lengthCm": 34,
+          "widthCm": 26,
+          "heightCm": 1
+        },
+        {
+          "id": "ship-2",
+          "nameKey": "default.s2.name",
+          "descriptionKey": "default.s2.desc",
+          "originCountry": "DEU",
+          "destinationCountry": "USA",
+          "category": "electronics",
+          "weightKg": 1.4,
+          "senderType": "business",
+          "trackingRequired": true,
+          "insuranceDesired": true,
+          "declaredValueEur": 480,
+          "deadlineDays": 6,
+          "battery": {
+            "type": "lithium_ion",
+            "quantity": 1,
+            "installed": true
+          },
+          "dependsOn": [
+            "ship-1"
+          ],
+          "lengthCm": 32,
+          "widthCm": 24,
+          "heightCm": 10
+        },
+        {
+          "id": "ship-3",
+          "nameKey": "default.s3.name",
+          "descriptionKey": "default.s3.desc",
+          "originCountry": "DEU",
+          "destinationCountry": "AUS",
+          "category": "mixed_goods",
+          "weightKg": 4.5,
+          "senderType": "business",
+          "budgetPreference": "cheapest",
+          "trackingRequired": true,
+          "declaredValueEur": 900,
+          "dependsOn": [
+            "ship-2"
+          ],
+          "lengthCm": 45,
+          "widthCm": 35,
+          "heightCm": 25
+        },
+        {
+          "id": "ship-4",
+          "nameKey": "default.s4.name",
+          "descriptionKey": "default.s4.desc",
+          "originCountry": "DEU",
+          "destinationCountry": "BRA",
+          "category": "mixed_goods",
+          "weightKg": 8,
+          "senderType": "business",
+          "budgetPreference": "balanced",
+          "declaredValueEur": 1200,
+          "insuranceDesired": true,
+          "trackingRequired": true,
+          "dependsOn": [
+            "ship-3"
+          ],
+          "lengthCm": 55,
+          "widthCm": 40,
+          "heightCm": 30
+        },
+        {
+          "id": "ship-5",
+          "nameKey": "default.s5.name",
+          "descriptionKey": "default.s5.desc",
+          "originCountry": "JPN",
+          "destinationCountry": "DEU",
+          "category": "electronics",
+          "weightKg": 2.2,
+          "senderType": "business",
+          "trackingRequired": true,
+          "battery": {
+            "type": "lithium_ion",
+            "quantity": 1,
+            "installed": true
+          },
+          "dependsOn": [
+            "ship-2"
+          ],
+          "lengthCm": 35,
+          "widthCm": 25,
+          "heightCm": 15
+        },
+        {
+          "id": "ship-6",
+          "nameKey": "default.s6.name",
+          "descriptionKey": "default.s6.desc",
+          "originCountry": "DEU",
+          "destinationCountry": "CHE",
+          "category": "other",
+          "weightKg": 22,
+          "senderType": "business",
+          "deadlineDays": 2,
+          "budgetPreference": "fastest",
+          "trackingRequired": true,
+          "declaredValueEur": 3200,
+          "insuranceDesired": true,
+          "lengthCm": 100,
+          "widthCm": 45,
+          "heightCm": 35
+        }
+      ]
+    },
+    {
+      "id": "blank",
+      "nameKey": "tpl.blank.name"
+    }
+  ],
+  "shipments": [
+    {
+      "id": "tpl-documents",
+      "nameKey": "tpl.documents",
+      "shipment": {
+        "quantity": 1,
+        "packages": 1,
+        "trackingRequired": true,
+        "originCountry": "DEU",
+        "destinationCountry": "JPN",
+        "category": "documents",
+        "weightKg": 0.3,
+        "signatureRequired": true
+      }
+    },
+    {
+      "id": "tpl-battery",
+      "nameKey": "tpl.battery",
+      "shipment": {
+        "quantity": 1,
+        "packages": 1,
+        "trackingRequired": true,
+        "originCountry": "DEU",
+        "destinationCountry": "USA",
+        "category": "electronics",
+        "weightKg": 1.4,
+        "lengthCm": 32,
+        "widthCm": 24,
+        "heightCm": 10,
+        "battery": {
+          "type": "lithium_ion",
+          "quantity": 1,
+          "installed": true
+        },
+        "insuranceDesired": true,
+        "declaredValueEur": 480
+      }
+    },
+    {
+      "id": "tpl-bulky",
+      "nameKey": "tpl.bulky",
+      "shipment": {
+        "quantity": 1,
+        "packages": 1,
+        "trackingRequired": true,
+        "originCountry": "DEU",
+        "destinationCountry": "CHE",
+        "category": "other",
+        "weightKg": 22,
+        "lengthCm": 100,
+        "widthCm": 45,
+        "heightCm": 35,
+        "deadlineDays": 2
+      }
+    }
+  ]
+}

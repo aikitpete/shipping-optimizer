@@ -1,0 +1,120 @@
+{
+  "profile": "demo",
+  "title": "Shipping Optimizer · Kestrel Labs launch (demo)",
+  "demo": true,
+  "defaultPlanId": "launch-q4",
+  "quickDefault": {
+    "origin": "DEU",
+    "destination": "JPN",
+    "category": "documents",
+    "weightKg": 0.3
+  },
+  "newShipmentRoute": {
+    "origin": "DEU",
+    "destination": "USA"
+  },
+  "requiredRoutes": [
+    "DEU-USA",
+    "DEU-JPN",
+    "DEU-AUS",
+    "DEU-BRA",
+    "DEU-CHE",
+    "JPN-DEU"
+  ],
+  "pairedCountries": [],
+  "guide": {
+    "groups": [
+      {
+        "id": "export",
+        "routes": [
+          "DEU-USA",
+          "DEU-JPN",
+          "DEU-AUS",
+          "DEU-BRA",
+          "DEU-CHE"
+        ],
+        "defaultRoute": "DEU-USA",
+        "fasterRule": "faster",
+        "docServiceId": "mx-envelope",
+        "presets": [
+          {
+            "id": "doc_thin",
+            "category": "documents",
+            "weightKg": 0.1,
+            "dims": [
+              35,
+              27,
+              1
+            ],
+            "docs": true
+          },
+          {
+            "id": "doc_pack",
+            "category": "documents",
+            "weightKg": 0.4,
+            "dims": [
+              34,
+              26,
+              2
+            ],
+            "docs": true
+          },
+          {
+            "id": "unit_box",
+            "category": "electronics",
+            "weightKg": 1.4,
+            "dims": [
+              32,
+              24,
+              10
+            ],
+            "docs": false
+          },
+          {
+            "id": "carton_5",
+            "category": "mixed_goods",
+            "weightKg": 5,
+            "dims": [
+              45,
+              35,
+              25
+            ],
+            "docs": false
+          },
+          {
+            "id": "case_22",
+            "category": "other",
+            "weightKg": 22,
+            "dims": [
+              100,
+              45,
+              35
+            ],
+            "docs": false
+          }
+        ]
+      },
+      {
+        "id": "returns",
+        "routes": [
+          "JPN-DEU"
+        ],
+        "defaultRoute": "JPN-DEU",
+        "fasterRule": "other_provider",
+        "presets": [
+          {
+            "id": "ret_box",
+            "category": "electronics",
+            "weightKg": 2.2,
+            "dims": [
+              35,
+              25,
+              15
+            ],
+            "docs": false
+          }
+        ]
+      }
+    ]
+  }
+}

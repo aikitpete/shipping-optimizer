@@ -1,0 +1,1126 @@
+{
+  "tariffs": [
+    {
+      "id": "mx-express:DEU-USA",
+      "serviceId": "mx-express",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 14,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 41.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 47.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 56.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 80.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 121.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 195.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 269.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 519.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:DEU-USA",
+      "serviceId": "mx-economy",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 26.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 30.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 36.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 51.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 77.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 125.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 171.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:DEU-USA",
+      "serviceId": "mx-envelope",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 36.9
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 57.2
+        }
+      ]
+    },
+    {
+      "id": "mx-express:DEU-JPN",
+      "serviceId": "mx-express",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 16,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 46.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 53.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 63.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 90.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 136.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 219.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 301.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 581.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:DEU-JPN",
+      "serviceId": "mx-economy",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 29.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 34.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 40.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 57.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 86.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 140.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 192.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:DEU-JPN",
+      "serviceId": "mx-envelope",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 41.3
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 64.0
+        }
+      ]
+    },
+    {
+      "id": "mx-express:DEU-AUS",
+      "serviceId": "mx-express",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 19,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 55.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 63.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 75.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 108.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 162.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 262.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 361.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 696.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:DEU-AUS",
+      "serviceId": "mx-economy",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 35.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 41.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 49.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 69.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 104.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 168.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 229.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:DEU-AUS",
+      "serviceId": "mx-envelope",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 49.4
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 76.6
+        }
+      ]
+    },
+    {
+      "id": "mx-express:DEU-BRA",
+      "serviceId": "mx-express",
+      "routeId": "DEU-BRA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 23,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 67.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 77.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 91.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 130.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 197.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 317.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 436.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 841.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:DEU-BRA",
+      "serviceId": "mx-economy",
+      "routeId": "DEU-BRA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 43.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 49.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 59.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 83.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 125.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 203.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 278.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:DEU-BRA",
+      "serviceId": "mx-envelope",
+      "routeId": "DEU-BRA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 59.8
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 92.7
+        }
+      ]
+    },
+    {
+      "id": "mx-express:DEU-CHE",
+      "serviceId": "mx-express",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 8,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 22.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 25.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 30.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 44.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 66.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 107.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 147.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 285.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:DEU-CHE",
+      "serviceId": "mx-economy",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 14.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 16.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 19.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 28.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 42.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 68.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 94.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:DEU-CHE",
+      "serviceId": "mx-envelope",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 20.3
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 31.5
+        }
+      ]
+    },
+    {
+      "id": "mx-express:JPN-DEU",
+      "serviceId": "mx-express",
+      "routeId": "JPN-DEU",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [
+        {
+          "kind": "insurance",
+          "coverEur": 1000,
+          "amount": 15,
+          "currency": "EUR",
+          "status": "verified_live"
+        }
+      ],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 45.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 52.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 62.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 88.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 133.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 215.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 296.9
+        },
+        {
+          "minKg": 30,
+          "maxKg": 70,
+          "price": 571.9
+        }
+      ]
+    },
+    {
+      "id": "mx-economy:JPN-DEU",
+      "serviceId": "mx-economy",
+      "routeId": "JPN-DEU",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "online",
+      "vatMode": "excluded",
+      "fuelSurcharge": "excluded",
+      "confidence": "high",
+      "status": "verified_live",
+      "sourceIds": [
+        "src-mx-calc"
+      ],
+      "primarySourceId": "src-mx-calc",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_calc",
+        "tariff.mx_divisor"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.5,
+          "price": 29.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 1,
+          "price": 33.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 40.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 56.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 85.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 138.9
+        },
+        {
+          "minKg": 20,
+          "maxKg": 30,
+          "price": 188.9
+        }
+      ]
+    },
+    {
+      "id": "mx-envelope:JPN-DEU",
+      "serviceId": "mx-envelope",
+      "routeId": "JPN-DEU",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "service_point",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "primarySourceId": "src-mx-guide",
+      "lastVerified": "2026-10-05",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.mx_envelope"
+      ],
+      "optionalCharges": [],
+      "type": "fixed_packages",
+      "packages": [
+        {
+          "id": "envelope",
+          "name": "Express Envelope",
+          "dimsCm": [
+            35,
+            27,
+            1
+          ],
+          "maxKg": 0.5,
+          "docsOnly": true,
+          "price": 40.6
+        },
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "dimsCm": [
+            30,
+            20,
+            10
+          ],
+          "maxKg": 2,
+          "docsOnly": false,
+          "price": 62.9
+        }
+      ]
+    }
+  ]
+}

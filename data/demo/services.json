@@ -1,0 +1,387 @@
+[
+  {
+    "id": "np-letter-registered",
+    "providerId": "nordpost",
+    "name": "Registered Letter",
+    "kind": "letter_registered",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-CHE"
+    ],
+    "docsOnly": true,
+    "allowsMerchandise": false,
+    "maxKg": 2,
+    "limits": {
+      "maxLengthCm": 60,
+      "maxTotalCm": 90,
+      "minFaceCm": [
+        14,
+        9
+      ],
+      "maxKg": 2,
+      "sourceIds": [
+        "src-np-limits"
+      ],
+      "confirmed": true
+    },
+    "routeLimits": {},
+    "dimDivisor": null,
+    "tracking": true,
+    "signature": true,
+    "insurance": false,
+    "irreplaceable": "unconfirmed",
+    "lithium": "prohibited",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "post_office",
+    "collection": "unconfirmed",
+    "availability": "bookable",
+    "unavailableRoutes": {
+      "DEU-BRA": "not_offered"
+    },
+    "bookingUrl": "https://example.com/nordpost",
+    "accessKey": "access.np"
+  },
+  {
+    "id": "np-parcel-economy",
+    "providerId": "nordpost",
+    "name": "Economy Parcel",
+    "kind": "parcel",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 20,
+    "limits": {
+      "maxLengthCm": 100,
+      "maxSumCm": 260,
+      "minFaceCm": [
+        15,
+        10
+      ],
+      "maxKg": 20,
+      "sourceIds": [
+        "src-np-limits"
+      ],
+      "noteKey": "limits.np_parcel",
+      "confirmed": true
+    },
+    "routeLimits": {
+      "DEU-AUS": {
+        "maxLengthCm": 100,
+        "maxSumCm": 260,
+        "minFaceCm": [
+          15,
+          10
+        ],
+        "maxKg": 10,
+        "sourceIds": [
+          "src-np-limits"
+        ],
+        "noteKey": "limits.np_parcel_aus",
+        "confirmed": true
+      },
+      "DEU-BRA": {
+        "maxLengthCm": 90,
+        "maxSumCm": 200,
+        "minFaceCm": [
+          15,
+          10
+        ],
+        "maxKg": 10,
+        "sourceIds": [
+          "src-np-limits"
+        ],
+        "noteKey": "limits.np_parcel_aus",
+        "confirmed": true
+      }
+    },
+    "dimDivisor": null,
+    "tracking": "unconfirmed",
+    "signature": "unconfirmed",
+    "insurance": true,
+    "irreplaceable": "unconfirmed",
+    "lithium": "prohibited",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "post_office",
+    "collection": "unconfirmed",
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/nordpost",
+    "accessKey": "access.np"
+  },
+  {
+    "id": "np-parcel-priority",
+    "providerId": "nordpost",
+    "name": "Priority Parcel (tracked)",
+    "kind": "parcel",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-CHE"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 20,
+    "limits": {
+      "maxLengthCm": 120,
+      "maxSumCm": 300,
+      "minFaceCm": [
+        15,
+        10
+      ],
+      "maxKg": 20,
+      "sourceIds": [
+        "src-np-limits"
+      ],
+      "confirmed": true
+    },
+    "routeLimits": {},
+    "dimDivisor": null,
+    "tracking": true,
+    "signature": true,
+    "insurance": true,
+    "irreplaceable": "unconfirmed",
+    "lithium": "restricted",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "post_office",
+    "collection": "unconfirmed",
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/nordpost",
+    "accessKey": "access.np"
+  },
+  {
+    "id": "mx-envelope",
+    "providerId": "meridian",
+    "name": "Express Envelope & Small Box",
+    "kind": "envelope",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE",
+      "JPN-DEU"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 2,
+    "limits": {
+      "maxDimsCm": [
+        35,
+        28,
+        10
+      ],
+      "maxKg": 2,
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "noteKey": "limits.mx_box",
+      "confirmed": true
+    },
+    "routeLimits": {},
+    "dimDivisor": null,
+    "tracking": true,
+    "signature": true,
+    "insurance": true,
+    "irreplaceable": true,
+    "lithium": "prohibited",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "service_point",
+    "collection": true,
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/meridian",
+    "accessKey": "access.mx"
+  },
+  {
+    "id": "mx-express",
+    "providerId": "meridian",
+    "name": "Express Worldwide",
+    "kind": "express",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE",
+      "JPN-DEU"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 70,
+    "limits": {
+      "maxLengthCm": 120,
+      "maxKg": 70,
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "confirmed": true
+    },
+    "routeLimits": {},
+    "dimDivisor": 5000,
+    "tracking": true,
+    "signature": true,
+    "insurance": true,
+    "irreplaceable": true,
+    "lithium": "restricted",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "service_point",
+    "collection": true,
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/meridian",
+    "accessKey": "access.mx"
+  },
+  {
+    "id": "mx-economy",
+    "providerId": "meridian",
+    "name": "Economy Express",
+    "kind": "express_economy",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE",
+      "JPN-DEU"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 30,
+    "limits": {
+      "maxLengthCm": 120,
+      "maxKg": 30,
+      "sourceIds": [
+        "src-mx-guide"
+      ],
+      "confirmed": true
+    },
+    "routeLimits": {},
+    "dimDivisor": 5000,
+    "tracking": true,
+    "signature": true,
+    "insurance": true,
+    "irreplaceable": "unconfirmed",
+    "lithium": "restricted",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "service_point",
+    "collection": true,
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/meridian",
+    "accessKey": "access.mx"
+  },
+  {
+    "id": "ph-best-rate",
+    "providerId": "parcelhub",
+    "name": "Best-Rate Comparison",
+    "kind": "aggregator",
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 30,
+    "limits": {
+      "maxLengthCm": 120,
+      "maxKg": 30,
+      "confirmed": false,
+      "sourceIds": [
+        "src-ph-quote"
+      ]
+    },
+    "routeLimits": {},
+    "dimDivisor": null,
+    "tracking": true,
+    "signature": "unconfirmed",
+    "insurance": true,
+    "irreplaceable": "unconfirmed",
+    "lithium": "unconfirmed",
+    "senderTypes": {
+      "private": true,
+      "business": true
+    },
+    "businessAccountRequired": false,
+    "dropoff": "service_point",
+    "collection": "unconfirmed",
+    "availability": "bookable",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/parcelhub",
+    "accessKey": "access.ph"
+  },
+  {
+    "id": "af-consolidated",
+    "providerId": "atlas",
+    "name": "Consolidated Air Freight",
+    "kind": "freight",
+    "routes": [
+      "DEU-USA",
+      "DEU-AUS",
+      "DEU-BRA"
+    ],
+    "docsOnly": false,
+    "allowsMerchandise": true,
+    "maxKg": 500,
+    "limits": {
+      "maxKg": 500,
+      "confirmed": false,
+      "sourceIds": [
+        "src-af-quote"
+      ]
+    },
+    "routeLimits": {},
+    "dimDivisor": null,
+    "tracking": true,
+    "signature": "unconfirmed",
+    "insurance": true,
+    "irreplaceable": "unconfirmed",
+    "lithium": "unconfirmed",
+    "senderTypes": {
+      "private": false,
+      "business": true
+    },
+    "businessAccountRequired": true,
+    "dropoff": "collection",
+    "collection": true,
+    "availability": "quote_only",
+    "unavailableRoutes": {},
+    "bookingUrl": "https://example.com/atlas",
+    "accessKey": "access.af"
+  }
+]

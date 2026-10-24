@@ -1,0 +1,618 @@
+{
+  "tariffs": [
+    {
+      "id": "np-letter-registered:DEU-USA",
+      "serviceId": "np-letter-registered",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "exempt",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.05,
+          "price": 4.9
+        },
+        {
+          "minKg": 0.05,
+          "maxKg": 0.5,
+          "price": 8.9
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 2,
+          "price": 17.9
+        }
+      ]
+    },
+    {
+      "id": "np-letter-registered:DEU-JPN",
+      "serviceId": "np-letter-registered",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "exempt",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.05,
+          "price": 5.1
+        },
+        {
+          "minKg": 0.05,
+          "maxKg": 0.5,
+          "price": 9.3
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 2,
+          "price": 18.8
+        }
+      ]
+    },
+    {
+      "id": "np-letter-registered:DEU-AUS",
+      "serviceId": "np-letter-registered",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "exempt",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.05,
+          "price": 5.6
+        },
+        {
+          "minKg": 0.05,
+          "maxKg": 0.5,
+          "price": 10.2
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 2,
+          "price": 20.6
+        }
+      ]
+    },
+    {
+      "id": "np-letter-registered:DEU-CHE",
+      "serviceId": "np-letter-registered",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "exempt",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 0.05,
+          "price": 2.9
+        },
+        {
+          "minKg": 0.05,
+          "maxKg": 0.5,
+          "price": 5.3
+        },
+        {
+          "minKg": 0.5,
+          "maxKg": 2,
+          "price": 10.7
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-economy:DEU-USA",
+      "serviceId": "np-parcel-economy",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 22.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 26.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 35.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 49.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 72.9
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-economy:DEU-JPN",
+      "serviceId": "np-parcel-economy",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 24.3
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 28.5
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 38.1
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 52.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 77.3
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-economy:DEU-AUS",
+      "serviceId": "np-parcel-economy",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 27.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 32.8
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 43.8
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 60.9
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-economy:DEU-BRA",
+      "serviceId": "np-parcel-economy",
+      "routeId": "DEU-BRA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list",
+        "tariff.np_brazil"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 35.5
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 41.7
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 55.6
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 77.3
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-economy:DEU-CHE",
+      "serviceId": "np-parcel-economy",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 10.3
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 12.1
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 16.2
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 22.5
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 32.8
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-priority:DEU-USA",
+      "serviceId": "np-parcel-priority",
+      "routeId": "DEU-USA",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 34.9
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 39.9
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 52.9
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 71.9
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 104.9
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-priority:DEU-JPN",
+      "serviceId": "np-parcel-priority",
+      "routeId": "DEU-JPN",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 37.0
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 42.3
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 56.1
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 76.2
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 111.2
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-priority:DEU-AUS",
+      "serviceId": "np-parcel-priority",
+      "routeId": "DEU-AUS",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 42.6
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 48.7
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 64.5
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 87.7
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 128.0
+        }
+      ]
+    },
+    {
+      "id": "np-parcel-priority:DEU-CHE",
+      "serviceId": "np-parcel-priority",
+      "routeId": "DEU-CHE",
+      "currency": "EUR",
+      "appliesTo": "all",
+      "channel": "counter",
+      "vatMode": "included",
+      "fuelSurcharge": "included",
+      "confidence": "high",
+      "status": "verified_published",
+      "sourceIds": [
+        "src-np-tarif"
+      ],
+      "primarySourceId": "src-np-tarif",
+      "lastVerified": "2026-10-08",
+      "effectiveDate": "2026-01-01",
+      "conflicts": [],
+      "noteKeys": [
+        "tariff.np_list"
+      ],
+      "optionalCharges": [],
+      "type": "weight_brackets",
+      "brackets": [
+        {
+          "minKg": 0,
+          "maxKg": 1,
+          "price": 15.7
+        },
+        {
+          "minKg": 1,
+          "maxKg": 2,
+          "price": 18.0
+        },
+        {
+          "minKg": 2,
+          "maxKg": 5,
+          "price": 23.8
+        },
+        {
+          "minKg": 5,
+          "maxKg": 10,
+          "price": 32.4
+        },
+        {
+          "minKg": 10,
+          "maxKg": 20,
+          "price": 47.2
+        }
+      ]
+    }
+  ]
+}

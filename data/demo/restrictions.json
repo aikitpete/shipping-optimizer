@@ -1,0 +1,81 @@
+[
+  {
+    "id": "dg-lithium-ion",
+    "kind": "dangerous_goods",
+    "appliesTo": [
+      "mx-express",
+      "mx-economy",
+      "np-parcel-priority"
+    ],
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE",
+      "JPN-DEU"
+    ],
+    "status": "confirmed_restricted",
+    "links": [
+      "https://example.com/meridian/service-guide.pdf"
+    ],
+    "lastVerified": "2026-10-05"
+  },
+  {
+    "id": "customs-brazil",
+    "kind": "customs",
+    "appliesTo": [
+      "np-parcel-economy",
+      "mx-express",
+      "mx-economy",
+      "ph-best-rate",
+      "af-consolidated"
+    ],
+    "routes": [
+      "DEU-BRA"
+    ],
+    "status": "eligibility_not_confirmed",
+    "links": [
+      "https://example.com/customs/brazil"
+    ],
+    "lastVerified": null
+  },
+  {
+    "id": "insurance-us-high-value",
+    "kind": "insurance",
+    "appliesTo": [
+      "np-parcel-economy",
+      "np-parcel-priority"
+    ],
+    "routes": [
+      "DEU-USA"
+    ],
+    "status": "eligibility_not_confirmed",
+    "links": [
+      "https://example.com/nordpost/insurance"
+    ],
+    "lastVerified": null
+  },
+  {
+    "id": "collect-meridian",
+    "kind": "collection",
+    "appliesTo": [
+      "mx-express",
+      "mx-economy",
+      "mx-envelope"
+    ],
+    "routes": [
+      "DEU-USA",
+      "DEU-JPN",
+      "DEU-AUS",
+      "DEU-BRA",
+      "DEU-CHE",
+      "JPN-DEU"
+    ],
+    "status": "confirmed_allowed",
+    "links": [
+      "https://example.com/meridian/pickup"
+    ],
+    "lastVerified": "2026-10-05"
+  }
+]

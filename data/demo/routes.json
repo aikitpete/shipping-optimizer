@@ -1,0 +1,84 @@
+{
+  "countries": [
+    {
+      "code": "DEU",
+      "flag": "🇩🇪",
+      "name": {
+        "en": "Germany",
+        "sk": "Nemecko"
+      }
+    },
+    {
+      "code": "USA",
+      "flag": "🇺🇸",
+      "name": {
+        "en": "United States",
+        "sk": "USA"
+      }
+    },
+    {
+      "code": "JPN",
+      "flag": "🇯🇵",
+      "name": {
+        "en": "Japan",
+        "sk": "Japonsko"
+      }
+    },
+    {
+      "code": "AUS",
+      "flag": "🇦🇺",
+      "name": {
+        "en": "Australia",
+        "sk": "Austrália"
+      }
+    },
+    {
+      "code": "BRA",
+      "flag": "🇧🇷",
+      "name": {
+        "en": "Brazil",
+        "sk": "Brazília"
+      }
+    },
+    {
+      "code": "CHE",
+      "flag": "🇨🇭",
+      "name": {
+        "en": "Switzerland",
+        "sk": "Švajčiarsko"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "DEU-USA",
+      "origin": "DEU",
+      "destination": "USA"
+    },
+    {
+      "id": "DEU-JPN",
+      "origin": "DEU",
+      "destination": "JPN"
+    },
+    {
+      "id": "DEU-AUS",
+      "origin": "DEU",
+      "destination": "AUS"
+    },
+    {
+      "id": "DEU-BRA",
+      "origin": "DEU",
+      "destination": "BRA"
+    },
+    {
+      "id": "DEU-CHE",
+      "origin": "DEU",
+      "destination": "CHE"
+    },
+    {
+      "id": "JPN-DEU",
+      "origin": "JPN",
+      "destination": "DEU"
+    }
+  ]
+}

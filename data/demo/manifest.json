@@ -1,0 +1,22 @@
+{
+  "profile": "demo",
+  "files": {
+    "providers": "providers.json",
+    "services": "services.json",
+    "routes": "routes.json",
+    "sources": "sources.json",
+    "transit": "transit-times.json",
+    "restrictions": "restrictions.json",
+    "rates": "exchange-rates.json",
+    "templates": "templates.json",
+    "config": "config.json",
+    "snapshot": "tariff-snapshot.json",
+    "i18nEn": "i18n.en.json",
+    "i18nSk": "i18n.sk.json",
+    "tariffFiles": [
+      "tariff-tables/meridian.json",
+      "tariff-tables/nordpost.json",
+      "tariff-tables/parcelhub-atlas.json"
+    ]
+  }
+}

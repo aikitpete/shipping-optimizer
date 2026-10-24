@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-private
+.DS_Store
+*.log
+.env*
+
+# Private profile: your own tariffs, plans and tests. Never commit.
+data/private/
+tests-private/
