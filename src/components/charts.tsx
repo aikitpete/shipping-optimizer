@@ -1,3 +1,4 @@
+import { activeLocale } from '../i18n/languages';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /** Width of an element, tracked with ResizeObserver (falls back to `initial` when there is no layout, e.g. in tests). */
@@ -26,7 +27,10 @@ export function niceMax(v: number, ticks = 4): { max: number; step: number } {
   return { max: Math.ceil(v / step) * step, step };
 }
 
-export const eur0 = (n: number) => (Math.abs(n - Math.round(n)) < 0.005 ? `${Math.round(n)}` : n.toFixed(2));
+export const eur0 = (n: number) => {
+  const whole = Math.abs(n - Math.round(n)) < 0.005;
+  return new Intl.NumberFormat(activeLocale(), { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: whole ? 0 : 2 }).format(n);
+};
 
 /* ---------- horizontal bars (HTML, so labels wrap and it works at phone width) ---------- */
 export interface BarRow {

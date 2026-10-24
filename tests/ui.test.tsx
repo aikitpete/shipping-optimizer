@@ -24,11 +24,11 @@ function render(el: React.ReactElement, lang: Lang, plan: Plan) {
 describe('pages render without a browser', () => {
   const plan = createDefaultPlan(ds, NOW);
   const allOn = plan;
-  for (const lang of ['en', 'sk'] as const) {
+  for (const lang of ds.config.languages) {
     it(`planner (${lang}) shows 6 shipments and the plan name`, () => {
       const html = render(<PlannerPage />, lang, plan);
       expect((html.match(/<article/g) ?? []).length).toBe(6);
-      expect(html).toContain(lang === 'en' ? 'Kestrel K1 launch, Q4' : 'Štart Kestrel K1, Q4');
+      expect(html).toContain(({ en: 'Kestrel K1 launch, Q4', de: 'Kestrel K1 Launch, Q4' } as Record<string, string>)[lang]);
       expect(html).not.toMatch(/Total for all/);
     });
     it(`every other page renders (${lang})`, () => {
@@ -50,7 +50,7 @@ describe('pages render without a browser', () => {
     expect(ds.config.demo).toBe(true);
   });
   it('raw i18n keys never leak into the rendered pages', () => {
-    for (const lang of ['en', 'sk'] as const) {
+    for (const lang of ds.config.languages) {
       const html = render(<PlannerPage />, lang, plan) + render(<TariffsPage />, lang, plan) + render(<SettingsPage />, lang, plan);
       expect(html).not.toMatch(/>(?:app|nav|form|plan|rec|opt|tar|totals|settings|health)\.[a-z_.]+</);
     }

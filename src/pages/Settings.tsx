@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react';
 import { useI18n } from '../i18n';
 import { useApp } from '../hooks/useApp';
+import { LANGUAGES } from '../i18n/languages';
 import { ConfirmDialog, download } from '../components/common';
 import { exportPlans, importPlans } from '../lib/persistence/db';
 import { DEFAULT_WEIGHTS } from '../lib/recommendations/recommend';
 
 export function SettingsPage() {
   const { t } = useI18n();
-  const { prefs, setPrefs, plans, reloadPlans, resetAll } = useApp();
+  const { ds, prefs, setPrefs, plans, reloadPlans, resetAll } = useApp();
   const file = useRef<HTMLInputElement>(null);
   const [msg, setMsg] = useState<string>('');
   const [confirm, setConfirm] = useState(false);
@@ -18,7 +19,7 @@ export function SettingsPage() {
       <div className="panel">
         <h2>{t('settings.title')}</h2>
         <label className="field"><span>{t('settings.language')}</span>
-          <select value={prefs.lang} onChange={(e) => setPrefs({ lang: e.target.value as 'en' | 'sk' })}><option value="en">English</option><option value="sk">Slovenčina</option></select></label>
+          <select value={prefs.lang} onChange={(e) => setPrefs({ lang: e.target.value })}>{ds.config.languages.map((l) => <option key={l} value={l}>{LANGUAGES[l]?.label ?? l}</option>)}</select></label>
         <label className="field"><span>{t('settings.currency')}</span>
           <select value={prefs.currencyDisplay} onChange={(e) => setPrefs({ currencyDisplay: e.target.value as 'eur' | 'native' | 'both' })}>
             {(['both', 'eur', 'native'] as const).map((c) => <option key={c} value={c}>{t(`settings.currency.${c}`)}</option>)}</select></label>

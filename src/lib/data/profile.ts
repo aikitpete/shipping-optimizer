@@ -4,7 +4,7 @@ import type { RawData } from './dataset';
 export interface ProfileData {
   raw: RawData;
   snapshot: Record<string, string>;
-  i18n: { en: Record<string, string>; sk: Record<string, string> };
+  i18n: Record<string, Record<string, string>>;
 }
 
 /** Files of a profile, relative to its folder. */
@@ -12,7 +12,9 @@ export interface Manifest {
   profile: string;
   files: {
     providers: string; services: string; routes: string; sources: string; transit: string; restrictions: string; rates: string;
-    templates: string; config: string; snapshot: string; i18nEn: string; i18nSk: string; tariffFiles: string[];
+    templates: string; config: string; snapshot: string; tariffFiles: string[];
+    /** One text file per language, e.g. { en: 'i18n.en.json', de: 'i18n.de.json' }. */
+    i18n: Record<string, string>;
   };
 }
 
@@ -20,14 +22,16 @@ export interface Manifest {
 export async function loadProfile(read: (path: string) => Promise<unknown>): Promise<ProfileData> {
   const m = (await read('manifest.json')) as Manifest;
   const f = m.files;
-  const [providers, services, routes, sources, transit, restrictions, rates, templates, config, snapshot, en, sk] = await Promise.all(
-    [f.providers, f.services, f.routes, f.sources, f.transit, f.restrictions, f.rates, f.templates, f.config, f.snapshot, f.i18nEn, f.i18nSk].map(read),
+  const [providers, services, routes, sources, transit, restrictions, rates, templates, config, snapshot] = await Promise.all(
+    [f.providers, f.services, f.routes, f.sources, f.transit, f.restrictions, f.rates, f.templates, f.config, f.snapshot].map(read),
   );
+  const i18n: Record<string, Record<string, string>> = {};
+  for (const [lang, file] of Object.entries(f.i18n)) i18n[lang] = (await read(file)) as Record<string, string>;
   const tariffFiles = await Promise.all(f.tariffFiles.map(read));
   return {
     raw: { providers, services, routes, sources, transit, restrictions, rates, templates, config, tariffFiles },
     snapshot: snapshot as Record<string, string>,
-    i18n: { en: en as Record<string, string>, sk: sk as Record<string, string> },
+    i18n,
   };
 }
 

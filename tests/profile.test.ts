@@ -21,7 +21,7 @@ describe('data profile', () => {
   });
   it('every file in the manifest exists', () => {
     const m = JSON.parse(fs.readFileSync(path.join(PROFILE_DIR, 'manifest.json'), 'utf8')) as Manifest;
-    const files = Object.values(m.files).flat();
+    const files = Object.values(m.files).flatMap((v) => (typeof v === 'string' || Array.isArray(v) ? v : Object.values(v)));
     for (const f of files) expect(fs.existsSync(path.join(PROFILE_DIR, f)), f).toBe(true);
   });
   it('is swappable: a modified copy of the profile loads through the same loader', async () => {

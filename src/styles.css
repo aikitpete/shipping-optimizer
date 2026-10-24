@@ -148,3 +148,12 @@ button.bar-row:hover:not(:disabled), .bar-row:focus-visible, .bar-row:hover { ba
 .plantools { display:flex; gap:8px; flex-wrap:wrap; align-items:end; } .plantools .field { flex:1; min-width:180px; }
 .menu { position:relative; } .menu > div { position:absolute; right:0; top:100%; z-index:20; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:6px; display:flex; flex-direction:column; gap:4px; min-width:220px; box-shadow:0 6px 24px rgba(0,0,0,.18); } .menu > div button { text-align:left; }
 @media (max-width:700px) { .sizegrid { grid-template-columns:1fr; } .routebar { grid-template-columns:1fr; } .swap { justify-self:center; transform:rotate(90deg); } .boxprev { max-width:140px; } }
+
+/* Two-column pages need room: always stack them so the results table never gets squeezed. */
+/* The content column is capped, so a side-by-side layout never has room. */
+.page.two { grid-template-columns:1fr; }
+.tbl th, .tbl td { overflow-wrap:normal; word-break:normal; }
+.tbl td > button, .tbl th { white-space:nowrap; }
+.tbl td:nth-child(2) { white-space:nowrap; }
+.panel { min-width:0; }
+.panel:has(> .tbl) { overflow-x:auto; }

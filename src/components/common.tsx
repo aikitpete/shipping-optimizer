@@ -35,7 +35,7 @@ export function MsgList({ items, kind }: { items: Msg[]; kind?: 'warn' | 'bad' }
 export function useCountryName() {
   const { lang } = useI18n();
   const { ds } = useApp();
-  return (code: string) => ds.countries.find((c) => c.code === code)?.name[lang] ?? code;
+  return (code: string) => ds.countries.find((c) => c.code === code)?.name[lang] ?? ds.countries.find((c) => c.code === code)?.name.en ?? code;
 }
 export function useShipmentName() {
   const { t } = useI18n();

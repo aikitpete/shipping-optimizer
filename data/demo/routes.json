@@ -5,7 +5,7 @@
       "flag": "🇩🇪",
       "name": {
         "en": "Germany",
-        "sk": "Nemecko"
+        "de": "Deutschland"
       }
     },
     {
@@ -13,7 +13,7 @@
       "flag": "🇺🇸",
       "name": {
         "en": "United States",
-        "sk": "USA"
+        "de": "USA"
       }
     },
     {
@@ -21,7 +21,7 @@
       "flag": "🇯🇵",
       "name": {
         "en": "Japan",
-        "sk": "Japonsko"
+        "de": "Japan"
       }
     },
     {
@@ -29,7 +29,7 @@
       "flag": "🇦🇺",
       "name": {
         "en": "Australia",
-        "sk": "Austrália"
+        "de": "Australien"
       }
     },
     {
@@ -37,7 +37,7 @@
       "flag": "🇧🇷",
       "name": {
         "en": "Brazil",
-        "sk": "Brazília"
+        "de": "Brasilien"
       }
     },
     {
@@ -45,7 +45,7 @@
       "flag": "🇨🇭",
       "name": {
         "en": "Switzerland",
-        "sk": "Švajčiarsko"
+        "de": "Schweiz"
       }
     }
   ],

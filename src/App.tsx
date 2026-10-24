@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { I18nProvider, translate } from './i18n';
+import { LANGUAGES, localeOf } from './i18n/languages';
 import { AppContext, type AppCtx } from './hooks/useApp';
 import type { Dataset } from './lib/data/dataset';
 import type { Plan } from './lib/data/schemas';
@@ -11,10 +12,10 @@ import { TariffsPage } from './pages/Tariffs';
 import { DataHealthPage } from './pages/DataHealth';
 import { SettingsPage } from './pages/Settings';
 
-function SavePill({ s, lang }: { s: { status: 'idle' | 'saving' | 'saved' | 'error'; at: string | null }; lang: 'en' | 'sk' }) {
+function SavePill({ s, lang }: { s: { status: 'idle' | 'saving' | 'saved' | 'error'; at: string | null }; lang: string }) {
   if (s.status === 'idle') return null;
   const tt = (k: string) => translate(lang, k);
-  const time = s.at ? new Date(s.at).toLocaleTimeString(lang === 'sk' ? 'sk-SK' : 'en-GB', { hour: '2-digit', minute: '2-digit' }) : '';
+  const time = s.at ? new Date(s.at).toLocaleTimeString(localeOf(lang), { hour: '2-digit', minute: '2-digit' }) : '';
   return <span className={`savepill ${s.status}`} role="status" aria-live="polite">{s.status === 'saving' ? tt('save.saving') : s.status === 'saved' ? `✓ ${tt('save.saved')} ${time}` : `⚠ ${tt('save.error')}`}</span>;
 }
 
@@ -34,7 +35,8 @@ export default function App({ ds, snapshot, storeKind }: { ds: Dataset; snapshot
 
   const setPrefs = useCallback((p: Partial<Prefs>) => setPrefsState((cur) => { const next = { ...cur, ...p }; savePrefs(next); return next; }), []);
 
-  useEffect(() => { document.documentElement.lang = prefs.lang; document.title = ds.config.title; }, [prefs.lang, ds]);
+  const lang = ds.config.languages.includes(prefs.lang) ? prefs.lang : ds.config.languages[0];
+  useEffect(() => { document.documentElement.lang = lang; document.title = ds.config.title; }, [lang, ds]);
 
   useEffect(() => {
     ensureDefaultPlan(ds, new Date().toISOString())
@@ -45,7 +47,7 @@ export default function App({ ds, snapshot, storeKind }: { ds: Dataset; snapshot
   const plan = plans.find((p) => p.id === prefs.selectedPlanId) ?? plans[0] ?? null;
 
   const ctx: AppCtx = {
-    ds, snapshot, today, prefs, setPrefs, plans, plan,
+    ds, snapshot, today, prefs: { ...prefs, lang }, setPrefs, plans, plan,
     saveStatus,
     savePlan: async (p) => {
       setPlans((cur) => cur.map((x) => (x.id === p.id ? p : x)));
@@ -68,17 +70,17 @@ export default function App({ ds, snapshot, storeKind }: { ds: Dataset; snapshot
     resetAll: async () => { const p = await resetToDefaults(ds, new Date().toISOString()); setPlans(p); setPrefs({ selectedPlanId: p[0].id }); },
     selectPlan: (id) => setPrefs({ selectedPlanId: id }),
   };
-  const t = (k: string) => translate(prefs.lang, k);
+  const t = (k: string) => translate(lang, k);
 
   return (
-    <I18nProvider lang={prefs.lang}>
+    <I18nProvider lang={lang}>
       <AppContext.Provider value={ctx}>
         <header className="top">
           <h1>{ds.config.title}</h1>
           <nav aria-label="Main">{TABS.map((x) => <button key={x} className={tab === x ? 'active' : ''} onClick={() => setTab(x)} aria-current={tab === x ? 'page' : undefined}>{t(`nav.${x}`)}</button>)}</nav>
-          <SavePill s={saveStatus} lang={prefs.lang} />
+          <SavePill s={saveStatus} lang={lang} />
           <div className="langs" role="group" aria-label={t('settings.language')}>
-            {(['en', 'sk'] as const).map((l) => <button key={l} className={prefs.lang === l ? 'active' : ''} onClick={() => setPrefs({ lang: l })}>{l.toUpperCase()}</button>)}
+            {ds.config.languages.length > 1 && ds.config.languages.map((l) => <button key={l} className={lang === l ? 'active' : ''} onClick={() => setPrefs({ lang: l })}>{LANGUAGES[l]?.short ?? l.toUpperCase()}</button>)}
           </div>
         </header>
         {ds.config.demo && <div className="banner">{t('app.demo')}</div>}

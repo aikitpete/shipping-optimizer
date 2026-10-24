@@ -44,7 +44,7 @@ export type Provider = z.infer<typeof providerSchema>;
 
 export const routeSchema = z.object({ id: z.string(), origin: countryCode, destination: countryCode });
 export type Route = z.infer<typeof routeSchema>;
-export const countrySchema = z.object({ code: countryCode, flag: z.string().optional(), name: z.object({ en: z.string(), sk: z.string() }) });
+export const countrySchema = z.object({ code: countryCode, flag: z.string().optional(), name: z.object({ en: z.string() }).catchall(z.string()) });
 export const routesFileSchema = z.object({ countries: z.array(countrySchema), routes: z.array(routeSchema) });
 
 export const limitsSchema = z.object({
@@ -302,6 +302,8 @@ export const configSchema = z.object({
   title: z.string(),
   /** True for the public showcase dataset (shows a banner). */
   demo: z.boolean().default(false),
+  /** Languages this profile offers (codes known to src/i18n/languages.ts). The first is the default. */
+  languages: z.array(z.string().regex(/^[a-z]{2}$/)).min(1).default(['en']),
   defaultPlanId: z.string(),
   quickDefault: z.object({ origin: countryCode, destination: countryCode, category: z.enum(categories), weightKg: z.number().positive() }),
   newShipmentRoute: z.object({ origin: countryCode, destination: countryCode }),

@@ -2,7 +2,7 @@
 
 **Plan a multi-parcel project, not just one parcel.** Compare carriers by price, size and weight limits, batteries, transit time and data quality, then see the cost of the whole plan with an honest total: *"at least €510"* until every leg is priced.
 
-Bilingual (EN/SK) · React + TypeScript + Vite · runs entirely in the browser · MIT
+Multilingual (the demo ships English and German; languages are set per data profile) · React + TypeScript + Vite · runs entirely in the browser · MIT
 
 **[Live demo →](https://aikitpete.github.io/shipping-optimizer/)** (fictional carriers and illustrative prices)
 
@@ -48,15 +48,18 @@ Both backends sit behind one small `PlanStore` interface (`src/lib/persistence/s
 - To use your own data, copy `data/demo/` to `data/private/`, replace the JSON, and adjust `config.json`. Run `npm run verify:data:private` to validate it, `npm run build:claude` to build.
 - Point the demo at any other folder without rebuilding: set `window.SHIPPING_DATA_BASE = 'my-data/'` before the app script loads, or replace the files in `dist/data/demo/`.
 
+### Languages are data too
+The language selector is built from `config.languages` of the active profile: the demo offers English and German, a private profile can offer any mix of the languages the app knows (`en`, `sk`, `de` today; add one in `src/i18n/languages.ts` plus a core dictionary). Country names live in the profile's `routes.json`, so a profile only needs names for the languages it offers.
+
 ### What a profile contains
 ```
 manifest.json         which files belong to the profile
-config.json           title, default plan, quick-compare defaults, required routes, package-guide groups and presets
-routes.json           countries (code, flag, EN/SK names) and routes
+config.json           title, offered languages, default plan, quick-compare defaults, required routes, package-guide groups and presets
+routes.json           countries (code, flag, one name per language) and routes
 providers.json  services.json  tariff-tables/*.json  transit-times.json  restrictions.json
 sources.json          every price points to one primary source (regulator > carrier > calculator > secondary > seed)
 exchange-rates.json  templates.json  tariff-snapshot.json
-i18n.en.json  i18n.sk.json   texts that belong to the data (plan names, notes, preset labels)
+i18n.<lang>.json     texts that belong to the data (plan names, notes, preset labels), one file per language
 ```
 Everything is validated with Zod when loaded (`src/lib/data/schemas.ts`), and `npm run verify:data` runs the structural checks plus fault-injection self-tests that prove the checker really catches broken data.
 

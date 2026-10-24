@@ -11,12 +11,14 @@
     "templates": "templates.json",
     "config": "config.json",
     "snapshot": "tariff-snapshot.json",
-    "i18nEn": "i18n.en.json",
-    "i18nSk": "i18n.sk.json",
     "tariffFiles": [
       "tariff-tables/meridian.json",
       "tariff-tables/nordpost.json",
       "tariff-tables/parcelhub-atlas.json"
-    ]
+    ],
+    "i18n": {
+      "en": "i18n.en.json",
+      "de": "i18n.de.json"
+    }
   }
 }

@@ -22,7 +22,7 @@ export interface Dataset {
   providers: Provider[];
   services: Service[];
   routes: Route[];
-  countries: { code: string; flag?: string; name: { en: string; sk: string } }[];
+  countries: { code: string; flag?: string; name: Record<string, string> }[];
   sources: Source[];
   tariffs: Tariff[];
   transit: Transit[];
