@@ -1,5 +1,7 @@
 # Shipping Optimizer
 
+[![CI](https://img.shields.io/github/actions/workflow/status/aikitpete/shipping-optimizer/ci.yml?branch=main&label=CI)](https://github.com/aikitpete/shipping-optimizer/actions/workflows/ci.yml) [![License](https://img.shields.io/github/license/aikitpete/shipping-optimizer)](LICENSE) [![Live demo](https://img.shields.io/badge/demo-live-brightgreen)](https://aikitpete.github.io/shipping-optimizer/) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white) ![Zod](https://img.shields.io/badge/Zod-3E67B1?logo=zod&logoColor=white)
+
 **Plan a multi-parcel project, not just one parcel.** Compare carriers by price, size and weight limits, batteries, transit time and data quality, then see the cost of the whole plan with an honest total: *"at least €510"* until every leg is priced.
 
 Multilingual (the demo ships English and German; languages are set per data profile) · React + TypeScript + Vite · runs entirely in the browser · MIT
