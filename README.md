@@ -29,24 +29,9 @@ Open **Compare** to try the package guide (documents, a device box, a carton, a 
 
 > **The demo runs on sample data.** The carriers (Nordpost, Meridian Express, Parcelhub, Atlas Freight), prices and URLs are illustrative, built to be realistic in *shape*, so the repository can be public. They are not live tariffs and never an offer. The engine tags every price with a status and a primary source; nothing is "verified" without one.
 
-## Swappable data: public demo, private real data
+## Bring your own data
 
-The app is generic. All *data* comes from one **profile**: carriers, services, routes and countries, tariffs, limits, restrictions, transit times, sources, exchange rates, plan templates, package presets and the profile's own texts.
-
-| | **Demo (public, this repo)** | **Private (yours, never committed)** |
-|---|---|---|
-| Data | `data/demo/*.json`, fetched in the browser | `data/private/*.json`, git-ignored |
-| Plans storage | IndexedDB (Dexie) in your browser | Claude artifact database (`db` capability), synced across devices |
-| Build | `npm run build` → static site (GitHub Pages) | `npm run build:claude` → one self-contained HTML file |
-| Tests | `npm test` (`tests/`) | `npm run test:private` (`tests-private/`, git-ignored) |
-
-Both backends sit behind one small `PlanStore` interface (`src/lib/persistence/store.ts`); the app picks the backend at start-up, and on first run with a database it imports existing browser plans once.
-
-### Keeping private data private
-- `data/private/` and `tests-private/` are in `.gitignore`. CI and the Pages workflow only see `data/demo/`.
-- The public build never contains the private profile: it is inlined only by `scripts/build-private.ts`, into `dist-private/` (also ignored).
-- To use your own data, copy `data/demo/` to `data/private/`, replace the JSON, and adjust `config.json`. Run `npm run verify:data:private` to validate it, `npm run build:claude` to build.
-- Point the demo at any other folder without rebuilding: set `window.SHIPPING_DATA_BASE = 'my-data/'` before the app script loads, or replace the files in `dist/data/demo/`.
+The app is generic. All *data* comes from one **profile**: carriers, services, routes and countries, tariffs, limits, restrictions, transit times, sources, exchange rates, plan templates, package presets and the profile's own texts. This repository ships only the invented demo profile in `data/demo/`; plans are stored in your browser (IndexedDB) behind a small `PlanStore` interface. To plan with your own tariffs, see [docs/private-data.md](docs/private-data.md).
 
 ### Languages are data too
 The language selector is built from `config.languages` of the active profile: the demo offers English and German, a private profile can offer any mix of the languages the app knows (`en`, `sk`, `de` today; add one in `src/i18n/languages.ts` plus a core dictionary). Country names live in the profile's `routes.json`, so a profile only needs names for the languages it offers.
