@@ -37,9 +37,27 @@ export async function loadProfile(read: (path: string) => Promise<unknown>): Pro
 
 declare global { interface Window { __SHIPPING_DATA__?: ProfileData; SHIPPING_DATA_BASE?: string } }
 
+/** Private build only: overlay newer exchange rates from the host's shared database (market/fx), when available. Falls back silently to the embedded rates. */
+async function withLiveRates(data: ProfileData): Promise<ProfileData> {
+  try {
+    const claude = (window as unknown as { claude?: { use?: (n: string) => Promise<any> } }).claude;
+    const db = claude?.use ? await claude.use('db') : null;
+    if (!db) return data;
+    const snap = await db.doc('market/fx').get();
+    if (!snap.exists) return data;
+    const v = snap.data() as { date?: string; source?: string; rates?: Record<string, unknown> } | undefined;
+    const cur = data.raw.rates as { rateDate: string; source: string; rates: Record<string, number> };
+    if (!v?.rates || !v.date || String(v.date) < String(cur.rateDate)) return data;
+    const fresh: Record<string, number> = {};
+    for (const [k, x] of Object.entries(v.rates)) if (Number(x) > 0) fresh[k] = Number(x);
+    data.raw.rates = { ...(cur as object), source: v.source || cur.source, rateDate: v.date, fetchedAt: v.date, rates: { ...cur.rates, ...fresh } };
+  } catch { /* keep embedded rates */ }
+  return data;
+}
+
 /** Browser entry: private builds inline the profile as window.__SHIPPING_DATA__; the public demo fetches static JSON, so the data can be swapped by replacing files. */
 export async function loadBrowserProfile(): Promise<ProfileData> {
-  if (typeof window !== 'undefined' && window.__SHIPPING_DATA__) return window.__SHIPPING_DATA__;
+  if (typeof window !== 'undefined' && window.__SHIPPING_DATA__) return withLiveRates(window.__SHIPPING_DATA__);
   const base = (typeof window !== 'undefined' && window.SHIPPING_DATA_BASE) || 'data/demo/';
   return loadProfile(async (p) => {
     const r = await fetch(base + p);
