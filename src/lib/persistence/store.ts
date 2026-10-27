@@ -58,11 +58,17 @@ declare global { interface Window { claude?: { use(name: string): Promise<unknow
  * Picks the backend. If the page runs as a Claude artifact with a granted `db`, plans go there (and are imported once from the
  * legacy IndexedDB when the database is still empty). Otherwise plain IndexedDB.
  */
+export async function claudeDb(): Promise<ClaudeDbLike | null> {
+  try {
+    const use = typeof window !== 'undefined' ? window.claude?.use : undefined;
+    return use ? ((await window.claude!.use('db')) as ClaudeDbLike | null) : null;
+  } catch { return null; }
+}
+
 export async function openStore(): Promise<PlanStore> {
   const local = dexieStore(new ShippingDb());
   try {
-    const use = typeof window !== 'undefined' ? window.claude?.use : undefined;
-    const db = use ? ((await window.claude!.use('db')) as ClaudeDbLike | null) : null;
+    const db = await claudeDb();
     if (!db) return local;
     const remote = claudeStore(db);
     if ((await remote.all()).length === 0) {
