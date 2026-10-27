@@ -83,7 +83,7 @@ export function Recommendations({ shipment, selectedId, onSelect, onPriority }: 
   const routeId = ds.routes.find((r) => r.origin === shipment.originCountry && r.destination === shipment.destinationCountry)?.id ?? '';
   const row = (c: Candidate) => (
     <tr key={c.service.id} className={selectedId === c.service.id ? 'selected' : ''}>
-      <td data-label=""><strong>{c.service.name}</strong>{c === mine && <> <span className="badge st-verified_published" title={t('rec.your_pick_hint')}>★ {t('rec.your_pick')}</span></>}<div className="muted small">{c.provider?.name}</div>
+      <td data-label=""><strong>{c.service.name}</strong>{c === mine && <> <span className="badge hl" title={t('rec.your_pick_hint')}>★ {t('rec.your_pick')}</span></>}<div className="muted small">{c.provider?.name}</div>
         {c.service.accessKey && <details className="access"><summary>{t('rec.access')}</summary><p>{t(c.service.accessKey)}</p></details>}</td>
       <td className="small" data-label={t('rec.limits')}><LimitsLine svc={c.service} routeId={routeId} /></td>
       <td data-label={t('rec.price')}><span><Money amount={c.price.nativeAmount} currency={c.price.currency} />{c.price.packageName && <div className="small muted">{c.price.packageName}</div>}{c.price.channel && c.price.channel !== 'unknown' && <div className="small muted">{t(`channel.${c.price.channel}`)}</div>}</span></td>
