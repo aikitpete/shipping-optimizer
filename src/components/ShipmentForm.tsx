@@ -169,13 +169,8 @@ export function ShipmentForm({ value, onChange, hidePriority }: { value: Shipmen
       </Section>
 
       <Section icon="✅" title={t('f2.requirements')}>
-        <div className="prefrow"><small className="muted">{t('f2.req_handling')}</small>
-          <div className="chips">
-            <Toggle on={value.trackingRequired} onToggle={(v) => set('trackingRequired', v)} icon="📍" label={t('form.tracking')} />
-            <Toggle on={value.signatureRequired} onToggle={(v) => set('signatureRequired', v)} icon="✍️" label={t('form.signature')} />
-            <Toggle on={value.insuranceDesired} onToggle={(v) => set('insuranceDesired', v)} icon="🛡️" label={t('form.insurance')} />
-            <Toggle on={value.irreplaceable} onToggle={(v) => set('irreplaceable', v)} icon="💎" label={t('form.irreplaceable')} />
-          </div></div>
+        <div className="prefrow"><small className="muted">{t('form.sender')}</small>
+          <Chips value={value.senderType} label={t('form.sender')} onPick={(s) => set('senderType', s)} options={[{ v: 'private', icon: '🧑', label: t('sender.private') }, { v: 'business', icon: '🏢', label: t('sender.business') }]} /></div>
         <div className="prefrow"><small className="muted">{t('f2.req_handover')}</small>
           <div className="chips">
             <Toggle on={value.servicePointDropoff} onToggle={(v) => set('servicePointDropoff', v)} icon="🏤" label={t('form.dropoff')} />
@@ -183,8 +178,13 @@ export function ShipmentForm({ value, onChange, hidePriority }: { value: Shipmen
           </div></div>
         <div className="prefrow"><small className="muted">{t('form.delivery')}</small>
           <Chips value={value.deliveryMethod} label={t('form.delivery')} onPick={(d) => set('deliveryMethod', d)} options={(['any', 'home', 'facility_collection'] as const).map((d) => ({ v: d, icon: DELIV_ICON[d], label: t(`f2.delivery_${d}`) }))} /></div>
-        <div className="prefrow"><small className="muted">{t('form.sender')}</small>
-          <Chips value={value.senderType} label={t('form.sender')} onPick={(s) => set('senderType', s)} options={[{ v: 'private', icon: '🧑', label: t('sender.private') }, { v: 'business', icon: '🏢', label: t('sender.business') }]} /></div>
+        <div className="prefrow"><small className="muted">{t('f2.req_handling')}</small>
+          <div className="chips">
+            <Toggle on={value.trackingRequired} onToggle={(v) => set('trackingRequired', v)} icon="📍" label={t('form.tracking')} />
+            <Toggle on={value.signatureRequired} onToggle={(v) => set('signatureRequired', v)} icon="✍️" label={t('form.signature')} />
+            <Toggle on={value.insuranceDesired} onToggle={(v) => set('insuranceDesired', v)} icon="🛡️" label={t('form.insurance')} />
+            <Toggle on={value.irreplaceable} onToggle={(v) => set('irreplaceable', v)} icon="💎" label={t('form.irreplaceable')} />
+          </div></div>
         {!hidePriority && <div className="prefrow"><small className="muted">{t('form.budget')}</small>
           <Chips value={value.budgetPreference} label={t('form.budget')} onPick={(b) => set('budgetPreference', b)} options={(['cheapest', 'balanced', 'fastest'] as const).map((b) => ({ v: b, icon: BUDGET_ICON[b], label: t(`budget.${b}`) }))} />
           <small className="muted">{t('f2.budget_hint')}</small></div>}
