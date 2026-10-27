@@ -45,6 +45,7 @@ export function RecCharts({ shipment, ranked, selectedId, onSelect }: { shipment
   const legend = <p className="small muted chart-legend"><span className="lg solid" /> {t('chart.verified')} · <span className="lg est" /> {t('chart.estimate')}</p>;
   return (
     <div className="chartbox">
+      <h3 className="sech">{t('rec.price_chart')}</h3>
       <div className="viewtabs" role="tablist" aria-label={t('chart.view')}>
         {(['bars', 'scatter', 'curve'] as View[]).map((v) => (
           <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'primary' : ''} onClick={() => setView(v)}>{t(`chart.view_${v}`)}</button>

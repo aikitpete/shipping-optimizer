@@ -20,21 +20,25 @@ export function QuickComparePage() {
     return r.success && codes.includes(r.data.originCountry) && codes.includes(r.data.destinationCountry) ? { ...r.data, id: 'quick' } : null;
   });
   const [added, setAdded] = useState(false);
+  const guide = (part: 'chips' | 'result') => <PackageGuide part={part} shipment={s} onPreset={(p: Preset) => { setAdded(false); setS((prev) => { const ok = routeInGroup(ds, p.group, prev.originCountry, prev.destinationCountry); const [o, d] = (ok ? `${prev.originCountry}-${prev.destinationCountry}` : groupOf(ds, p.group)!.defaultRoute).split('-'); return presetShipment(p, d, o); }); }} />;
   return (
-    <div className="page">
-      <PackageGuide shipment={s} onPreset={(p: Preset) => { setAdded(false); setS((prev) => { const ok = routeInGroup(ds, p.group, prev.originCountry, prev.destinationCountry); const [o, d] = (ok ? `${prev.originCountry}-${prev.destinationCountry}` : groupOf(ds, p.group)!.defaultRoute).split('-'); return presetShipment(p, d, o); }); }} />
-      <div className="page two">
-      <div className="panel"><h2>{t('quick.title')}</h2><ShipmentForm value={s} onChange={(p) => { setAdded(false); setS((prev) => shipmentSchema.parse({ ...prev, ...p })); }} /></div>
-      <div className="panel">
-        <Recommendations shipment={s} onSelect={plan ? (serviceId) => {
-          const now = new Date().toISOString();
-          const withShip = addShipment(plan, s, now);
-          const added = withShip.shipments[withShip.shipments.length - 1];
-          void savePlan(selectService(withShip, ds, added.id, serviceId, now, today));
-          setAdded(true);
-        } : undefined} />
-        {added && <p className="ok">{t('quick.added')}</p>}
-      </div>
+    <div className="cmp">
+      <aside className="cmp-side">
+        {guide('chips')}
+        <div className="panel"><h2>{t('quick.title')}</h2><ShipmentForm value={s} onChange={(p) => { setAdded(false); setS((prev) => shipmentSchema.parse({ ...prev, ...p })); }} /></div>
+      </aside>
+      <div className="cmp-main">
+        {guide('result')}
+        <div className="panel">
+          <Recommendations shipment={s} onSelect={plan ? (serviceId) => {
+            const now = new Date().toISOString();
+            const withShip = addShipment(plan, s, now);
+            const added = withShip.shipments[withShip.shipments.length - 1];
+            void savePlan(selectService(withShip, ds, added.id, serviceId, now, today));
+            setAdded(true);
+          } : undefined} />
+          {added && <p className="ok">{t('quick.added')}</p>}
+        </div>
       </div>
     </div>
   );

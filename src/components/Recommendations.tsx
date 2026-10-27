@@ -28,7 +28,9 @@ function Timeline({ list }: { list: Candidate[] }) {
   const { t } = useI18n();
   const max = Math.max(1, ...list.map((c) => c.transit?.maxDays ?? 0));
   return (
-    <div className="tl" role="list" aria-label={t('rec.timeline')}>
+    <div className="chartbox timeline">
+      <h3 className="sech">{t('rec.timeline')}</h3>
+      <div className="tl" role="list" aria-label={t('rec.timeline')}>
       {list.map((c) => {
         const tr = c.transit;
         return (
@@ -40,6 +42,7 @@ function Timeline({ list }: { list: Candidate[] }) {
         );
       })}
       <div className="small muted">{t('rec.timeline_axis', { n: max })}</div>
+      </div>
     </div>
   );
 }
@@ -97,17 +100,20 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
           const c = rec.top[p];
           return (
             <div className="pick" key={p}>
-              <div className="small muted">{t(`pick.${p}`)}</div>
-              {c ? (<><strong>{c.service.name}</strong><div><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div><div className="small">⏱ {transitText(c, t)}</div><StatusBadge status={c.price.tariffStatus} /></>) : <span className="muted">{t('pick.none')}</span>}
+              <div className="small muted pk-label">{t(`pick.${p}`)}</div>
+              {c ? (<><strong className="pk-name">{c.service.name}</strong><div className="pk-price"><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div><div className="small pk-time">⏱ {transitText(c, t)}</div><div className="pk-badge"><StatusBadge status={c.price.tariffStatus} /></div></>) : <span className="muted">{t('pick.none')}</span>}
             </div>
           );
         })}
       </div>
-      {rec.ranked.length > 1 && (<><h4>{t('rec.timeline')}</h4><Timeline list={shown} /></>)}
-      <p className="small muted">{t('rec.features_note')}</p>
-      <RecCharts shipment={shipment} ranked={rec.ranked} selectedId={selectedId} onSelect={onSelect} />
-      {rec.ranked.length > 0 && (
-        <table className="tbl stack"><thead><tr>{th('name', t('rec.service'))}<th>{t('rec.limits')}</th>{th('price', t('rec.price'))}{th('status', t('rec.status'))}{th('transit', t('rec.transit'))}{th('features', t('rec.features'), -1)}<th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{shown.map(row)}</tbody></table>
+      {rec.ranked.length > 1 && (
+        <div className="viz">
+          <Timeline list={shown} />
+          <RecCharts shipment={shipment} ranked={rec.ranked} selectedId={selectedId} onSelect={onSelect} />
+        </div>
+      )}
+      {rec.ranked.length > 0 && (<div className="chartbox"><h3 className="sech">{t('rec.all_options')}</h3><p className="small muted">{t('rec.sort_hint')} {t('rec.features_note')}</p>
+        <div className="scroll"><table className="tbl stack recstbl"><thead><tr>{th('name', t('rec.service'))}<th>{t('rec.limits')}</th>{th('price', t('rec.price'))}{th('status', t('rec.status'))}{th('transit', t('rec.transit'))}{th('features', t('rec.features'), -1)}<th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{shown.map(row)}</tbody></table></div></div>
       )}
       {rec.needsQuote.length > 0 && (
         <details open={rec.ranked.length === 0}><summary>{t('rec.needs_quote', { n: rec.needsQuote.length })}</summary>
