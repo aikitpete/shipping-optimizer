@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useRemembered } from '../lib/persistence/remember';
 import { useI18n } from '../i18n';
 import { useApp } from '../hooks/useApp';
 import type { Shipment } from '../lib/data/schemas';
-import { recommend, type Candidate, type Pick } from '../lib/recommendations/recommend';
+import { primaryPick, recommend, type Candidate, type Pick } from '../lib/recommendations/recommend';
 import { Money, MsgList, StatusBadge } from './common';
 import { RecCharts } from './RecCharts';
 import { LimitsLine } from './LimitsLine';
@@ -66,6 +66,10 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
     return o && ['name', 'price', 'status', 'transit', 'features', 'value'].includes(o.key ?? '') && (o.dir === 1 || o.dir === -1) ? { key: o.key as SortKey, dir: o.dir } : null;
   });
   const cur = sort ?? byPriority;
+  // Changing the priority hands control back to it: a manual column sort no longer overrides the choice.
+  const prevPref = useRef(shipment.budgetPreference);
+  useEffect(() => { if (prevPref.current !== shipment.budgetPreference) { prevPref.current = shipment.budgetPreference; setSort(null); } }, [shipment.budgetPreference, setSort]);
+  const mine = primaryPick(shipment, rec);
   const shown = useMemo(() => [...rec.ranked].sort((a, b) => {
     const x = sortVal(a, cur.key), y = sortVal(b, cur.key);
     if (x === null && y === null) return 0;
@@ -82,7 +86,7 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
   const routeId = ds.routes.find((r) => r.origin === shipment.originCountry && r.destination === shipment.destinationCountry)?.id ?? '';
   const row = (c: Candidate) => (
     <tr key={c.service.id} className={selectedId === c.service.id ? 'selected' : ''}>
-      <td data-label=""><strong>{c.service.name}</strong><div className="muted small">{c.provider?.name}</div>
+      <td data-label=""><strong>{c.service.name}</strong>{c === mine && <> <span className="badge st-verified_published" title={t('rec.your_pick_hint')}>★ {t('rec.your_pick')}</span></>}<div className="muted small">{c.provider?.name}</div>
         {c.service.accessKey && <details className="access"><summary>{t('rec.access')}</summary><p>{t(c.service.accessKey)}</p></details>}</td>
       <td className="small" data-label={t('rec.limits')}><LimitsLine svc={c.service} routeId={routeId} /></td>
       <td data-label={t('rec.price')}><span><Money amount={c.price.nativeAmount} currency={c.price.currency} />{c.price.packageName && <div className="small muted">{c.price.packageName}</div>}{c.price.channel && c.price.channel !== 'unknown' && <div className="small muted">{t(`channel.${c.price.channel}`)}</div>}</span></td>
