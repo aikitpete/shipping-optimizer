@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useRemembered } from '../lib/persistence/remember';
 import { useI18n } from '../i18n';
 import { useApp } from '../hooks/useApp';
 import type { Shipment } from '../lib/data/schemas';
@@ -7,7 +8,19 @@ import { Money, MsgList, StatusBadge } from './common';
 import { RecCharts } from './RecCharts';
 import { LimitsLine } from './LimitsLine';
 
-type Sort = 'price' | 'time';
+type SortKey = 'name' | 'price' | 'status' | 'transit' | 'features' | 'value';
+const STATUS_RANK: Record<string, number> = { verified_live: 0, verified_published: 1, historical: 2, research_estimate: 3, unverified_lead: 4 };
+/** Real values, not text: EUR amount, mid-point days, status trust rank, feature count. Unknowns sort last in either direction. */
+const sortVal = (c: Candidate, k: SortKey): number | string | null => {
+  switch (k) {
+    case 'name': return c.service.name.toLocaleLowerCase();
+    case 'price': return c.price.eur;
+    case 'status': return STATUS_RANK[c.price.tariffStatus ?? ''] ?? 5;
+    case 'transit': return c.transit ? mid(c) : null;
+    case 'features': return c.features;
+    case 'value': return c.valueScore;
+  }
+};
 const mid = (c: Candidate) => (c.transit ? (c.transit.minDays + c.transit.maxDays) / 2 : Infinity);
 const daysTxt = (c: Candidate) => (c.transit ? (c.transit.minDays === c.transit.maxDays ? `${c.transit.minDays}` : `${c.transit.minDays}–${c.transit.maxDays}`) : '?');
 
@@ -43,14 +56,32 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
   const { t } = useI18n();
   const { ds, prefs, today } = useApp();
   const rec = useMemo(() => recommend(shipment, ds, prefs.rankWeights, today), [shipment, ds, prefs.rankWeights, today]);
-  const [sort, setSort] = useState<Sort>('time');
-  const shown = useMemo(() => (sort === 'time' ? [...rec.ranked].sort((a, b) => mid(a) - mid(b) || a.price.eur! - b.price.eur!) : rec.ranked), [rec.ranked, sort]);
+  // Default order follows the shipment's priority; clicking a column header overrides it.
+  const byPriority: { key: SortKey; dir: 1 | -1 } = shipment.budgetPreference === 'fastest' ? { key: 'transit', dir: 1 } : shipment.budgetPreference === 'balanced' ? { key: 'value', dir: -1 } : { key: 'price', dir: 1 };
+  const [sort, setSort] = useRemembered<{ key: SortKey; dir: 1 | -1 } | null>(`sort.${onSelect ? 'plan' : 'compare'}`, () => null, (r) => {
+    const o = r as { key?: string; dir?: number } | null;
+    return o && ['name', 'price', 'status', 'transit', 'features', 'value'].includes(o.key ?? '') && (o.dir === 1 || o.dir === -1) ? { key: o.key as SortKey, dir: o.dir } : null;
+  });
+  const cur = sort ?? byPriority;
+  const shown = useMemo(() => [...rec.ranked].sort((a, b) => {
+    const x = sortVal(a, cur.key), y = sortVal(b, cur.key);
+    if (x === null && y === null) return 0;
+    if (x === null) return 1;
+    if (y === null) return -1;
+    const d = typeof x === 'string' ? x.localeCompare(y as string) : x - (y as number);
+    return d * cur.dir || (a.price.eur ?? 0) - (b.price.eur ?? 0);
+  }), [rec.ranked, cur.key, cur.dir]);
+  const th = (k: SortKey, label: string, first: 1 | -1 = 1) => (
+    <th aria-sort={cur.key === k ? (cur.dir === 1 ? 'ascending' : 'descending') : 'none'}>
+      <button type="button" className="sorth" onClick={() => setSort(cur.key === k ? { key: k, dir: (cur.dir * -1) as 1 | -1 } : { key: k, dir: first })}>{label}<span aria-hidden="true">{cur.key === k ? (cur.dir === 1 ? ' ▲' : ' ▼') : ' ↕'}</span></button>
+    </th>
+  );
   const routeId = ds.routes.find((r) => r.origin === shipment.originCountry && r.destination === shipment.destinationCountry)?.id ?? '';
   const row = (c: Candidate) => (
     <tr key={c.service.id} className={selectedId === c.service.id ? 'selected' : ''}>
       <td data-label=""><strong>{c.service.name}</strong><div className="muted small">{c.provider?.name}</div>
-        <LimitsLine svc={c.service} routeId={routeId} />
         {c.service.accessKey && <details className="access"><summary>{t('rec.access')}</summary><p>{t(c.service.accessKey)}</p></details>}</td>
+      <td className="small" data-label={t('rec.limits')}><LimitsLine svc={c.service} routeId={routeId} /></td>
       <td data-label={t('rec.price')}><span><Money amount={c.price.nativeAmount} currency={c.price.currency} />{c.price.packageName && <div className="small muted">{c.price.packageName}</div>}{c.price.channel && c.price.channel !== 'unknown' && <div className="small muted">{t(`channel.${c.price.channel}`)}</div>}</span></td>
       <td data-label={t('rec.status')}><StatusBadge status={c.price.tariffStatus} /></td>
       <td className="small" data-label={t('rec.transit')}>{transitText(c, t)}</td>
@@ -72,18 +103,11 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
           );
         })}
       </div>
-      {rec.ranked.length > 1 && (<>
-        <div className="sortbar"><span className="small muted">{t('rec.sort')}</span>
-          <div className="seg" role="radiogroup" aria-label={t('rec.sort')}>
-            {(['time', 'price'] as const).map((k) => <button type="button" key={k} role="radio" aria-checked={sort === k} className={sort === k ? 'on' : ''} onClick={() => setSort(k)}>{t(`rec.sort_${k}`)}</button>)}
-          </div></div>
-        <h4>{t('rec.timeline')}</h4>
-        <Timeline list={shown} />
-      </>)}
+      {rec.ranked.length > 1 && (<><h4>{t('rec.timeline')}</h4><Timeline list={shown} /></>)}
       <p className="small muted">{t('rec.features_note')}</p>
       <RecCharts shipment={shipment} ranked={rec.ranked} selectedId={selectedId} onSelect={onSelect} />
       {rec.ranked.length > 0 && (
-        <table className="tbl stack"><thead><tr><th>{t('rec.service')}</th><th>{t('rec.price')}</th><th>{t('rec.status')}</th><th>{t('rec.transit')}</th><th>{t('rec.features')}</th><th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{shown.map(row)}</tbody></table>
+        <table className="tbl stack"><thead><tr>{th('name', t('rec.service'))}<th>{t('rec.limits')}</th>{th('price', t('rec.price'))}{th('status', t('rec.status'))}{th('transit', t('rec.transit'))}{th('features', t('rec.features'), -1)}<th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{shown.map(row)}</tbody></table>
       )}
       {rec.needsQuote.length > 0 && (
         <details open={rec.ranked.length === 0}><summary>{t('rec.needs_quote', { n: rec.needsQuote.length })}</summary>

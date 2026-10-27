@@ -26,7 +26,7 @@ const fmtW = (kg: number) => (kg < 1 ? `${Math.round(kg * 1000)} g` : `${kg} kg`
 /** Weight entry in g or kg (stored as kg). Light items default to grams. */
 function WeightField({ kg, onCommit }: { kg: number; onCommit: (kg: number) => void }) {
   const { t } = useI18n();
-  const [unit, setUnit] = useState<'g' | 'kg'>(kg < 1 ? 'g' : 'kg');
+  const [unit, setUnit] = useState<'g' | 'kg'>(kg < 1 ? 'g' : 'kg'); // follows the remembered weight, so a saved 20 g reopens in grams
   const shown = unit === 'g' ? Math.round(kg * 1000 * 100) / 100 : kg;
   return (
     <div className="field"><span>{t('form.weight')}</span>

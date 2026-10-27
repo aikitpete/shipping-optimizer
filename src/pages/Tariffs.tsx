@@ -4,6 +4,7 @@ import { useApp } from '../hooks/useApp';
 import { Money, StatusBadge, useCountryName } from '../components/common';
 import type { Tariff } from '../lib/data/schemas';
 import { LimitsLine } from '../components/LimitsLine';
+import { useRemembered } from '../lib/persistence/remember';
 
 function Detail({ tr }: { tr: Tariff }) {
   const { t } = useI18n();
@@ -26,8 +27,8 @@ export function TariffsPage() {
   const { t } = useI18n();
   const cname = useCountryName();
   const { ds } = useApp();
-  const [route, setRoute] = useState('');
-  const [status, setStatus] = useState('');
+  const [route, setRoute] = useRemembered<string>('tariffs.route', () => '', (r) => (typeof r === 'string' ? r : null));
+  const [status, setStatus] = useRemembered<string>('tariffs.status', () => '', (r) => (typeof r === 'string' ? r : null));
   const rows = useMemo(() => ds.tariffs.filter((x) => (!route || x.routeId === route) && (!status || x.status === status)), [ds, route, status]);
   const [open, setOpen] = useState<string | null>(null);
   return (

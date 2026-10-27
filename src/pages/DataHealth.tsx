@@ -6,6 +6,7 @@ import { download } from '../components/common';
 import { checkDataset, selfTest, summarize, type Issue, type Severity } from '../lib/validation/check';
 import { buildAudit, reverify, type ReverifyReport } from '../lib/validation/reverify';
 import { rateAgeDays } from '../lib/pricing/currency';
+import { useRemembered } from '../lib/persistence/remember';
 
 export function DataHealthPage() {
   const { t } = useI18n();
@@ -14,7 +15,7 @@ export function DataHealthPage() {
   const [tests, setTests] = useState<{ name: string; pass: boolean }[] | null>(null);
   const [report, setReport] = useState<ReverifyReport | null>(null);
   const [busy, setBusy] = useState(false);
-  const [sev, setSev] = useState<Severity | 'all'>('all');
+  const [sev, setSev] = useRemembered<Severity | 'all'>('data.severity', () => 'all', (r) => (r === 'all' || r === 'error' || r === 'warning' || r === 'info' ? (r as Severity | 'all') : null));
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const x of ds.tariffs) c[x.status] = (c[x.status] ?? 0) + 1;

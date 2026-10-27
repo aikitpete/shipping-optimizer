@@ -5,13 +5,20 @@ import { ShipmentForm } from '../components/ShipmentForm';
 import { Recommendations } from '../components/Recommendations';
 import { shipmentSchema, type Shipment } from '../lib/data/schemas';
 import { addShipment, selectService } from '../lib/plans/ops';
+import { useRemembered } from '../lib/persistence/remember';
 import { PackageGuide } from '../components/PackageGuide';
 import { groupOf, presetShipment, routeInGroup, type Preset } from '../lib/recommendations/guide';
 
 export function QuickComparePage() {
   const { t } = useI18n();
   const { plan, savePlan, ds, today } = useApp();
-  const [s, setS] = useState<Shipment>(() => shipmentSchema.parse({ id: 'quick', nameKey: 'ship.quick', originCountry: ds.config.quickDefault.origin, destinationCountry: ds.config.quickDefault.destination, category: ds.config.quickDefault.category, weightKg: ds.config.quickDefault.weightKg }));
+  const fresh = () => shipmentSchema.parse({ id: 'quick', nameKey: 'ship.quick', originCountry: ds.config.quickDefault.origin, destinationCountry: ds.config.quickDefault.destination, category: ds.config.quickDefault.category, weightKg: ds.config.quickDefault.weightKg });
+  // The last used Compare form is remembered on this device; it is dropped if it no longer fits the loaded data (e.g. a country was removed).
+  const [s, setS] = useRemembered<Shipment>('compare.shipment', fresh, (raw) => {
+    const r = shipmentSchema.safeParse(raw);
+    const codes = ds.countries.map((c) => c.code) as string[];
+    return r.success && codes.includes(r.data.originCountry) && codes.includes(r.data.destinationCountry) ? { ...r.data, id: 'quick' } : null;
+  });
   const [added, setAdded] = useState(false);
   return (
     <div className="page">

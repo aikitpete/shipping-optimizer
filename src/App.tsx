@@ -5,6 +5,7 @@ import { AppContext, type AppCtx } from './hooks/useApp';
 import type { Dataset } from './lib/data/dataset';
 import type { Plan } from './lib/data/schemas';
 import { deletePlan, ensureDefaultPlan, listPlans, resetToDefaults, savePlan as dbSave } from './lib/persistence/db';
+import { useRemembered } from './lib/persistence/remember';
 import { loadPrefs, savePrefs, type Prefs } from './lib/persistence/prefs';
 import { PlannerPage } from './pages/Planner';
 import { QuickComparePage } from './pages/QuickCompare';
@@ -25,7 +26,7 @@ const TABS: Tab[] = ['planner', 'compare', 'tariffs', 'health', 'settings'];
 export default function App({ ds, snapshot, storeKind }: { ds: Dataset; snapshot: Record<string, string>; storeKind?: string }) {
   const [prefs, setPrefsState] = useState<Prefs>(() => loadPrefs());
   const [plans, setPlans] = useState<Plan[]>([]);
-  const [tab, setTab] = useState<Tab>('planner');
+  const [tab, setTab] = useRemembered<Tab>('tab', () => 'planner', (r) => (TABS.includes(r as Tab) ? (r as Tab) : null));
   const [ready, setReady] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState<{ status: 'idle' | 'saving' | 'saved' | 'error'; at: string | null }>({ status: 'idle', at: null });

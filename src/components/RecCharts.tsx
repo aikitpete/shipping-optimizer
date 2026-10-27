@@ -5,6 +5,7 @@ import type { Shipment } from '../lib/data/schemas';
 import type { Candidate } from '../lib/recommendations/recommend';
 import { priceShipment } from '../lib/pricing/price';
 import { BarChart, LineChart, ScatterChart, eur0, type BarRow, type Dot, type LineSeries } from './charts';
+import { useRemembered } from '../lib/persistence/remember';
 
 type View = 'bars' | 'scatter' | 'curve';
 const WEIGHTS = [0.5, 1, 2, 3, 5, 7.5, 10, 15, 20, 25, 30];
@@ -12,7 +13,7 @@ const WEIGHTS = [0.5, 1, 2, 3, 5, 7.5, 10, 15, 20, 25, 30];
 export function RecCharts({ shipment, ranked, selectedId, onSelect }: { shipment: Shipment; ranked: Candidate[]; selectedId?: string | null; onSelect?: (id: string) => void }) {
   const { t } = useI18n();
   const { ds, today } = useApp();
-  const [view, setView] = useState<View>('bars');
+  const [view, setView] = useRemembered<View>('chart.view', () => 'bars', (r) => (r === 'bars' || r === 'scatter' || r === 'curve' ? (r as View) : null));
   const list = ranked.filter((c) => c.price.eur !== null);
   const top = list.slice(0, 4);
   const curves = useMemo<LineSeries[]>(() => {
