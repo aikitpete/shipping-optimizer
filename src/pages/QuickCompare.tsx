@@ -25,12 +25,12 @@ export function QuickComparePage() {
     <div className="cmp">
       <aside className="cmp-side">
         {guide('chips')}
-        <div className="panel"><h2>{t('quick.title')}</h2><ShipmentForm value={s} onChange={(p) => { setAdded(false); setS((prev) => shipmentSchema.parse({ ...prev, ...p })); }} /></div>
+        <div className="panel"><h2>{t('quick.title')}</h2><ShipmentForm hidePriority value={s} onChange={(p) => { setAdded(false); setS((prev) => shipmentSchema.parse({ ...prev, ...p })); }} /></div>
       </aside>
       <div className="cmp-main">
         {guide('result')}
         <div className="panel">
-          <Recommendations shipment={s} onSelect={plan ? (serviceId) => {
+          <Recommendations shipment={s} onPriority={(b) => { setAdded(false); setS((prev) => ({ ...prev, budgetPreference: b })); }} onSelect={plan ? (serviceId) => {
             const now = new Date().toISOString();
             const withShip = addShipment(plan, s, now);
             const added = withShip.shipments[withShip.shipments.length - 1];

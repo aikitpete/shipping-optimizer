@@ -45,17 +45,20 @@ export interface BarRow {
   tip?: ReactNode;
   onClick?: () => void;
   badge?: ReactNode;
+  /** Optional start of a range bar (e.g. minimum days); the bar then spans from → value. */
+  from?: number;
 }
 export function BarChart({ rows, ariaLabel, max }: { rows: BarRow[]; ariaLabel: string; max?: number }) {
   const m = max ?? Math.max(1e-9, ...rows.map((r) => r.value ?? 0));
   return (
     <div className="bars" role="list" aria-label={ariaLabel}>
       {rows.map((r) => {
-        const pct = r.value === null ? 0 : Math.max(1.5, (r.value / m) * 100);
+        const start = r.value === null ? 0 : ((r.from ?? 0) / m) * 100;
+        const pct = r.value === null ? 0 : Math.max(1.5, (r.value / m) * 100 - start);
         const inner = (
           <>
             <span className="bar-label"><strong>{r.label}</strong>{r.sub && <span className="muted small"> {r.sub}</span>}</span>
-            <span className="bar-track"><span className={`bar-fill ${r.solid === false ? 'est' : ''} ${r.selected ? 'sel' : ''}`} style={{ width: `${pct}%` }} /></span>
+            <span className="bar-track"><span className={`bar-fill ${r.solid === false ? 'est' : ''} ${r.selected ? 'sel' : ''}`} style={{ width: `${pct}%`, marginLeft: `${start}%` }} /></span>
             <span className="bar-val">{r.valueText}</span>
             {r.badge}
             {r.tip && <span className="tip" role="tooltip">{r.tip}</span>}

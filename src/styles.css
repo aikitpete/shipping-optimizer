@@ -200,3 +200,7 @@ main { max-width:1640px; }
 @media (min-width:761px) { .recstbl td:nth-child(5), .recstbl td:nth-child(4) { width:1%; } }
 .tlrow { grid-template-columns:minmax(150px,1.3fr) 2fr minmax(90px,.7fr); }
 @media (max-width:560px){ .tlrow { grid-template-columns:1fr 1fr; } }
+.sortbar { grid-column:1 / -1; }
+.viz .bar-row { min-height:44px; } .viz .bar-row .bar-label { display:flex; flex-direction:column; } .viz .bar-row .bar-label .muted { margin-left:0; }
+.viz .bar-track { background:var(--soft); border-radius:7px; } .viz .bar-fill { border-radius:5px; } .viz .bar-track { height:14px; }
+.viewtabs { min-height:36px; align-items:center; }

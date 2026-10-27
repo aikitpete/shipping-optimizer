@@ -91,7 +91,7 @@ function BoxPreview({ l, w, h }: { l: number | null; w: number | null; h: number
   );
 }
 
-export function ShipmentForm({ value, onChange }: { value: Shipment; onChange: (patch: Partial<Shipment>) => void }) {
+export function ShipmentForm({ value, onChange, hidePriority }: { value: Shipment; onChange: (patch: Partial<Shipment>) => void; hidePriority?: boolean }) {
   const { t } = useI18n();
   const { ds } = useApp();
   const [name, setName] = useState(value.name ?? (value.nameKey ? t(value.nameKey) : ''));
@@ -185,9 +185,9 @@ export function ShipmentForm({ value, onChange }: { value: Shipment; onChange: (
           <Chips value={value.deliveryMethod} label={t('form.delivery')} onPick={(d) => set('deliveryMethod', d)} options={(['any', 'home', 'facility_collection'] as const).map((d) => ({ v: d, icon: DELIV_ICON[d], label: t(`f2.delivery_${d}`) }))} /></div>
         <div className="prefrow"><small className="muted">{t('form.sender')}</small>
           <Chips value={value.senderType} label={t('form.sender')} onPick={(s) => set('senderType', s)} options={[{ v: 'private', icon: '🧑', label: t('sender.private') }, { v: 'business', icon: '🏢', label: t('sender.business') }]} /></div>
-        <div className="prefrow"><small className="muted">{t('form.budget')}</small>
+        {!hidePriority && <div className="prefrow"><small className="muted">{t('form.budget')}</small>
           <Chips value={value.budgetPreference} label={t('form.budget')} onPick={(b) => set('budgetPreference', b)} options={(['cheapest', 'balanced', 'fastest'] as const).map((b) => ({ v: b, icon: BUDGET_ICON[b], label: t(`budget.${b}`) }))} />
-          <small className="muted">{t('f2.budget_hint')}</small></div>
+          <small className="muted">{t('f2.budget_hint')}</small></div>}
       </Section>
 
       <button type="button" className="morebtn" aria-expanded={more} onClick={() => setMore(!more)}>{more ? '▾' : '▸'} {t('f2.more')}</button>

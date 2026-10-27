@@ -5,6 +5,7 @@ import { useApp } from '../hooks/useApp';
 import type { Shipment } from '../lib/data/schemas';
 import { primaryPick, recommend, type Candidate, type Pick } from '../lib/recommendations/recommend';
 import { Money, MsgList, StatusBadge } from './common';
+import { BarChart, type BarRow } from './charts';
 import { RecCharts } from './RecCharts';
 import { LimitsLine } from './LimitsLine';
 
@@ -24,25 +25,21 @@ const sortVal = (c: Candidate, k: SortKey): number | string | null => {
 const mid = (c: Candidate) => (c.transit ? (c.transit.minDays + c.transit.maxDays) / 2 : Infinity);
 const daysTxt = (c: Candidate) => (c.transit ? (c.transit.minDays === c.transit.maxDays ? `${c.transit.minDays}` : `${c.transit.minDays}–${c.transit.maxDays}`) : '?');
 
-function Timeline({ list }: { list: Candidate[] }) {
+function TimePanel({ list, selectedId, onSelect }: { list: Candidate[]; selectedId?: string | null; onSelect?: (id: string) => void }) {
   const { t } = useI18n();
   const max = Math.max(1, ...list.map((c) => c.transit?.maxDays ?? 0));
+  const rows: BarRow[] = list.slice(0, 12).map((c) => ({
+    id: c.service.id, label: c.service.name, sub: c.provider?.name,
+    from: c.transit?.minDays, value: c.transit ? c.transit.maxDays : null, valueText: c.transit ? t('transit.days', { d: daysTxt(c) }) : t('transit.unknown'),
+    solid: c.transit ? c.transit.status !== 'research_estimate' : true, selected: selectedId === c.service.id,
+    onClick: onSelect ? () => onSelect(c.service.id) : undefined,
+  }));
   return (
-    <div className="chartbox timeline">
+    <div className="chartbox">
       <h3 className="sech">{t('rec.timeline')}</h3>
-      <div className="tl" role="list" aria-label={t('rec.timeline')}>
-      {list.map((c) => {
-        const tr = c.transit;
-        return (
-          <div className="tlrow" role="listitem" key={c.service.id}>
-            <div className="tn"><strong>{c.service.name}</strong><div className="small muted">{c.provider?.name}</div></div>
-            <div className="tltrack" aria-hidden="true">{tr && <div className={`tlbar${tr.status === 'research_estimate' ? ' est' : ''}`} style={{ left: `${((tr.minDays - 0) / max) * 100}%`, width: `${Math.max(((tr.maxDays - tr.minDays) / max) * 100, 2)}%` }} />}</div>
-            <div className="tlval"><strong>{tr ? t('transit.days', { d: daysTxt(c) }) : t('transit.unknown')}</strong><div className="small muted"><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div></div>
-          </div>
-        );
-      })}
-      <div className="small muted">{t('rec.timeline_axis', { n: max })}</div>
-      </div>
+      <div className="viewtabs"><span className="small muted">{t('rec.timeline_axis', { n: max })}</span></div>
+      <BarChart rows={rows} ariaLabel={t('rec.timeline')} max={max} />
+      <p className="small muted chart-legend"><span className="lg solid" /> {t('chart.time_published')} · <span className="lg est" /> {t('chart.time_estimate')}</p>
     </div>
   );
 }
@@ -55,7 +52,7 @@ function transitText(c: Candidate, t: ReturnType<typeof useI18n>['t']) {
   return `${t('transit.days', { d })}${c.transit.status === 'research_estimate' ? ' ' + t('transit.estimate') : ''}`;
 }
 
-export function Recommendations({ shipment, selectedId, onSelect }: { shipment: Shipment; selectedId?: string | null; onSelect?: (serviceId: string) => void }) {
+export function Recommendations({ shipment, selectedId, onSelect, onPriority }: { shipment: Shipment; selectedId?: string | null; onSelect?: (serviceId: string) => void; onPriority?: (b: Shipment['budgetPreference']) => void }) {
   const { t } = useI18n();
   const { ds, prefs, today } = useApp();
   const rec = useMemo(() => recommend(shipment, ds, prefs.rankWeights, today), [shipment, ds, prefs.rankWeights, today]);
@@ -110,10 +107,17 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
           );
         })}
       </div>
+      {onPriority && rec.ranked.length > 1 && (
+        <div className="sortbar"><span className="small muted">{t('form.budget')}</span>
+          <div className="seg" role="radiogroup" aria-label={t('form.budget')}>
+            {(['cheapest', 'balanced', 'fastest'] as const).map((b) => <button type="button" key={b} role="radio" aria-checked={shipment.budgetPreference === b} className={shipment.budgetPreference === b ? 'on' : ''} onClick={() => onPriority(b)}>{t(`budget.${b}`)}</button>)}
+          </div>
+          <span className="small muted">{t('f2.budget_hint')}</span></div>
+      )}
       {rec.ranked.length > 1 && (
         <div className="viz">
-          <Timeline list={shown} />
-          <RecCharts shipment={shipment} ranked={rec.ranked} selectedId={selectedId} onSelect={onSelect} />
+          <TimePanel list={shown} selectedId={selectedId} onSelect={onSelect} />
+          <RecCharts shipment={shipment} ranked={shown} selectedId={selectedId} onSelect={onSelect} />
         </div>
       )}
       {rec.ranked.length > 0 && (<div className="chartbox"><h3 className="sech">{t('rec.all_options')}</h3><p className="small muted">{t('rec.sort_hint')} {t('rec.features_note')}</p>
