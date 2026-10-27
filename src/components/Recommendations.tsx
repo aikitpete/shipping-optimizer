@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useI18n } from '../i18n';
 import { useApp } from '../hooks/useApp';
 import type { Shipment } from '../lib/data/schemas';
@@ -6,6 +6,30 @@ import { recommend, type Candidate, type Pick } from '../lib/recommendations/rec
 import { Money, MsgList, StatusBadge } from './common';
 import { RecCharts } from './RecCharts';
 import { LimitsLine } from './LimitsLine';
+
+type Sort = 'price' | 'time';
+const mid = (c: Candidate) => (c.transit ? (c.transit.minDays + c.transit.maxDays) / 2 : Infinity);
+const daysTxt = (c: Candidate) => (c.transit ? (c.transit.minDays === c.transit.maxDays ? `${c.transit.minDays}` : `${c.transit.minDays}–${c.transit.maxDays}`) : '?');
+
+function Timeline({ list }: { list: Candidate[] }) {
+  const { t } = useI18n();
+  const max = Math.max(1, ...list.map((c) => c.transit?.maxDays ?? 0));
+  return (
+    <div className="tl" role="list" aria-label={t('rec.timeline')}>
+      {list.map((c) => {
+        const tr = c.transit;
+        return (
+          <div className="tlrow" role="listitem" key={c.service.id}>
+            <div className="tn"><strong>{c.service.name}</strong><div className="small muted">{c.provider?.name}</div></div>
+            <div className="tltrack" aria-hidden="true">{tr && <div className={`tlbar${tr.status === 'research_estimate' ? ' est' : ''}`} style={{ left: `${((tr.minDays - 0) / max) * 100}%`, width: `${Math.max(((tr.maxDays - tr.minDays) / max) * 100, 2)}%` }} />}</div>
+            <div className="tlval"><strong>{tr ? t('transit.days', { d: daysTxt(c) }) : t('transit.unknown')}</strong><div className="small muted"><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div></div>
+          </div>
+        );
+      })}
+      <div className="small muted">{t('rec.timeline_axis', { n: max })}</div>
+    </div>
+  );
+}
 
 const PICKS: Pick[] = ['cheapest', 'fastest', 'bestValue', 'bestDocuments', 'bestTrackedInsured'];
 
@@ -19,6 +43,8 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
   const { t } = useI18n();
   const { ds, prefs, today } = useApp();
   const rec = useMemo(() => recommend(shipment, ds, prefs.rankWeights, today), [shipment, ds, prefs.rankWeights, today]);
+  const [sort, setSort] = useState<Sort>('time');
+  const shown = useMemo(() => (sort === 'time' ? [...rec.ranked].sort((a, b) => mid(a) - mid(b) || a.price.eur! - b.price.eur!) : rec.ranked), [rec.ranked, sort]);
   const routeId = ds.routes.find((r) => r.origin === shipment.originCountry && r.destination === shipment.destinationCountry)?.id ?? '';
   const row = (c: Candidate) => (
     <tr key={c.service.id} className={selectedId === c.service.id ? 'selected' : ''}>
@@ -41,15 +67,23 @@ export function Recommendations({ shipment, selectedId, onSelect }: { shipment: 
           return (
             <div className="pick" key={p}>
               <div className="small muted">{t(`pick.${p}`)}</div>
-              {c ? (<><strong>{c.service.name}</strong><div><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div><StatusBadge status={c.price.tariffStatus} /></>) : <span className="muted">{t('pick.none')}</span>}
+              {c ? (<><strong>{c.service.name}</strong><div><Money amount={c.price.nativeAmount} currency={c.price.currency} /></div><div className="small">⏱ {transitText(c, t)}</div><StatusBadge status={c.price.tariffStatus} /></>) : <span className="muted">{t('pick.none')}</span>}
             </div>
           );
         })}
       </div>
+      {rec.ranked.length > 1 && (<>
+        <div className="sortbar"><span className="small muted">{t('rec.sort')}</span>
+          <div className="seg" role="radiogroup" aria-label={t('rec.sort')}>
+            {(['time', 'price'] as const).map((k) => <button type="button" key={k} role="radio" aria-checked={sort === k} className={sort === k ? 'on' : ''} onClick={() => setSort(k)}>{t(`rec.sort_${k}`)}</button>)}
+          </div></div>
+        <h4>{t('rec.timeline')}</h4>
+        <Timeline list={shown} />
+      </>)}
       <p className="small muted">{t('rec.features_note')}</p>
       <RecCharts shipment={shipment} ranked={rec.ranked} selectedId={selectedId} onSelect={onSelect} />
       {rec.ranked.length > 0 && (
-        <table className="tbl stack"><thead><tr><th>{t('rec.service')}</th><th>{t('rec.price')}</th><th>{t('rec.status')}</th><th>{t('rec.transit')}</th><th>{t('rec.features')}</th><th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{rec.ranked.map(row)}</tbody></table>
+        <table className="tbl stack"><thead><tr><th>{t('rec.service')}</th><th>{t('rec.price')}</th><th>{t('rec.status')}</th><th>{t('rec.transit')}</th><th>{t('rec.features')}</th><th>{t('rec.notes')}</th>{onSelect && <th />}</tr></thead><tbody>{shown.map(row)}</tbody></table>
       )}
       {rec.needsQuote.length > 0 && (
         <details open={rec.ranked.length === 0}><summary>{t('rec.needs_quote', { n: rec.needsQuote.length })}</summary>

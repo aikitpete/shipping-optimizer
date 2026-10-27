@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useI18n } from '../i18n';
 import { useApp } from '../hooks/useApp';
-import { categories, type Shipment } from '../lib/data/schemas';
+import { documentCategories, type Shipment } from '../lib/data/schemas';
 import { useCountryName } from './common';
 
 export function NumInput({ value, onCommit, nullable, min = 0, step = 'any', id, ariaLabel }: { value: number | null; onCommit: (v: number | null) => void; nullable?: boolean; min?: number; step?: string; id?: string; ariaLabel?: string }) {
@@ -20,7 +20,29 @@ export function NumInput({ value, onCommit, nullable, min = 0, step = 'any', id,
   );
 }
 
-const CAT_ICON: Record<string, string> = { documents: '📄', original_documents: '📜', certified_copies: '📑', clothing: '👕', electronics: '🔌', books: '📚', gifts: '🎁', mixed_goods: '📦', other: '✳️' };
+const WEIGHT_PRESETS = [0.02, 0.1, 0.5, 1, 2, 5];
+const fmtW = (kg: number) => (kg < 1 ? `${Math.round(kg * 1000)} g` : `${kg} kg`);
+
+/** Weight entry in g or kg (stored as kg). Light items default to grams. */
+function WeightField({ kg, onCommit }: { kg: number; onCommit: (kg: number) => void }) {
+  const { t } = useI18n();
+  const [unit, setUnit] = useState<'g' | 'kg'>(kg < 1 ? 'g' : 'kg');
+  const shown = unit === 'g' ? Math.round(kg * 1000 * 100) / 100 : kg;
+  return (
+    <div className="field"><span>{t('form.weight')}</span>
+      <div className="wrow">
+        <NumInput value={shown} ariaLabel={t('form.weight')} onCommit={(v) => v && onCommit(unit === 'g' ? v / 1000 : v)} />
+        <div className="seg" role="radiogroup" aria-label={t('form.weight_unit')}>
+          {(['g', 'kg'] as const).map((u) => <button type="button" key={u} role="radio" aria-checked={unit === u} className={unit === u ? 'on' : ''} onClick={() => setUnit(u)}>{u}</button>)}
+        </div>
+      </div>
+      <div className="chips" aria-label={t('f2.weight_presets')}>
+        {WEIGHT_PRESETS.map((w) => <button type="button" key={w} className={`chip sm${Math.abs(kg - w) < 1e-9 ? ' on' : ''}`} onClick={() => { setUnit(w < 1 ? 'g' : 'kg'); onCommit(w); }}>{fmtW(w)}</button>)}
+      </div>
+    </div>
+  );
+}
+
 const DELIV_ICON: Record<string, string> = { any: '🔀', home: '🏠', facility_collection: '🏤' };
 const BUDGET_ICON: Record<string, string> = { cheapest: '💶', balanced: '⚖️', fastest: '⚡' };
 const PRESETS: { key: string; l: number; w: number; h: number }[] = [
@@ -99,12 +121,17 @@ export function ShipmentForm({ value, onChange }: { value: Shipment; onChange: (
       </Section>
 
       <Section icon="📦" title={t('f2.what')}>
-        <div className="tiles" role="radiogroup" aria-label={t('form.category')}>
-          {categories.map((c) => (
-            <button type="button" key={c} role="radio" aria-checked={value.category === c} className={`tile${value.category === c ? ' on' : ''}`} onClick={() => set('category', c)}>
-              <span className="ic" aria-hidden="true">{CAT_ICON[c]}</span><span>{t(`cat.${c}`)}</span>
-            </button>
-          ))}
+        <div className="tiles two" role="radiogroup" aria-label={t('form.category')}>
+          {([['docs', '📄'], ['goods', '📦']] as const).map(([k, ic]) => {
+            const isDocs = documentCategories.includes(value.category);
+            const on = (k === 'docs') === isDocs;
+            return (
+              <button type="button" key={k} role="radio" aria-checked={on} className={`tile${on ? ' on' : ''}`}
+                onClick={() => set('category', k === 'docs' ? 'documents' : (isDocs ? 'other' : value.category))}>
+                <span className="ic" aria-hidden="true">{ic}</span><span>{t(`f2.kind_${k}`)}</span><small className="muted">{t(`f2.kind_${k}_hint`)}</small>
+              </button>
+            );
+          })}
         </div>
       </Section>
 
@@ -112,7 +139,7 @@ export function ShipmentForm({ value, onChange }: { value: Shipment; onChange: (
         <div className="sizegrid">
           <div className="sizefields">
             <div className="row2">
-              <label className="field"><span>{t('form.weight')}</span><NumInput value={value.weightKg} onCommit={(v) => v && set('weightKg', v)} /></label>
+              <WeightField kg={value.weightKg} onCommit={(v) => set('weightKg', v)} />
               <div className="field"><span>{t('form.packages')}</span>
                 <div className="stepper">
                   <button type="button" aria-label="−" disabled={value.packages <= 1} onClick={() => set('packages', Math.max(1, value.packages - 1))}>−</button>
